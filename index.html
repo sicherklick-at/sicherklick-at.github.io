@@ -1,30 +1,20 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" data-lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Safeclicking — Königliche Cyberabwehr für KMU</title>
-  <meta name="description" content="Safeclicking schützt Unternehmen vor Phishing, Fake‑Shops und kompromittierten Domains. Audits, DNS‑Härtung, Schulungen und Incident‑Readiness – schnell, messbar, bezahlbar." />
+  <title>Safeclicking — Königliche Cyberabwehr & Webentwicklung</title>
+  <meta name="description" content="Safeclicking: Cyberabwehr, Website‑Entwicklung und SEO für KMU. Von Scam‑Signalen zu Bank‑Grade Intelligence. Audits, DNS‑Härtung, Phishing‑Schulungen, Webshops und Wartung." />
   <meta name="theme-color" content="#0a1220" />
-  <meta property="og:title" content="Safeclicking — Königliche Cyberabwehr für KMU" />
-  <meta property="og:description" content="Von Scam‑Signalen zu Bank‑Grade Intelligence. Audits, DNS‑Härtung, Schulungen und Incident‑Readiness." />
+  <meta property="og:title" content="Safeclicking — Königliche Cyberabwehr & Webentwicklung" />
+  <meta property="og:description" content="Audits, DNS‑Härtung, Webshops, SEO, Schulungen. Royal navy + gold design, schnell, messbar, bezahlbar." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="logo-hero.png" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231a2740'/%3E%3Ctext x='50' y='62' font-size='48' text-anchor='middle' fill='%23caa45a' font-family='Georgia,serif'%3ESC%3C/text%3E%3C/svg%3E">
   <style>
-    /* === Design tokens === */
     :root{
-      --bg:#0a1220;           /* royal navy */
-      --bg-2:#0e182b;         /* card backdrop */
-      --ink:#e9edf5;          /* primary text */
-      --muted:#9fb0d0;        /* secondary text */
-      --gold:#caa45a;         /* accent gold */
-      --gold-2:#b98f3e;       /* deeper gold */
-      --line:rgba(255,255,255,.08);
-      --radius:18px;
-      --shadow:0 20px 40px rgba(0,0,0,.35);
-      --shadow-sm:0 8px 20px rgba(0,0,0,.25);
-      --max:1180px;
+      --bg:#0a1220; --bg-2:#0e182b; --ink:#e9edf5; --muted:#9fb0d0; --gold:#caa45a; --gold-2:#b98f3e; --line:rgba(255,255,255,.08);
+      --radius:18px; --shadow:0 20px 40px rgba(0,0,0,.35); --shadow-sm:0 8px 20px rgba(0,0,0,.25); --max:1180px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -36,29 +26,27 @@
       font:16px/1.6 Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif}
     a{color:var(--gold)} a:hover{color:var(--ink)}
     h1,h2,h3{font-family:"Libre Baskerville",ui-serif,Georgia,serif; letter-spacing:.2px}
-    h1{font-size:clamp(34px,4.2vw,56px);line-height:1.1;margin:0 0 10px}
+    h1{font-size:clamp(34px,4.2vw,56px);line-height:1.1;margin:0 0 10px;text-shadow:0 2px 0 rgba(0,0,0,.3),0 8px 24px rgba(202,164,90,.15)}
     h2{font-size:clamp(26px,3.2vw,36px);margin:0 0 12px}
     h3{font-size:clamp(20px,2.2vw,24px);margin:0}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
     .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;font-weight:700;border:1px solid var(--gold);
-         background:linear-gradient(180deg, var(--gold), var(--gold-2));color:#0c0c0c;box-shadow:var(--shadow-sm);text-decoration:none}
+         background:linear-gradient(180deg, var(--gold), var(--gold-2));color:#0c0c0c;box-shadow:var(--shadow-sm);text-decoration:none;transition:transform .2s ease}
+    .btn:hover{transform:translateY(-1px)}
     .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-
-    /* === Top bar === */
     header{position:sticky;top:0;z-index:50;background:rgba(10,18,32,.7);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800}
-    .brand .crest{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 35% 35%, #e6cf95, #caa45a 60%, #6e5620 100%);box-shadow:0 8px 20px rgba(202,164,90,.45)}
-    nav a{margin-left:18px;color:var(--muted);text-decoration:none}
+    .brand .crest{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 35% 35%, #e6cf95, #caa45a 60%, #6e5620 100%);box-shadow:0 8px 20px rgba(202,164,90,.45);animation:glow 5s ease-in-out infinite}
+    nav a{margin-left:18px;color:var(--muted);text-decoration:none;transition:color .2s}
     nav a:hover{color:var(--ink)}
     .menu{display:none}
     @media (max-width:920px){nav{display:none}.menu{display:block}}
-
-    /* === Sections === */
     section{padding:64px 0}
     .hero{padding:84px 0 36px}
     .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
-    .card{background:rgba(14,24,43,.6);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card{background:rgba(14,24,43,.6);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 30px 60px rgba(0,0,0,.45)}
     .p24{padding:24px}
     .muted{color:var(--muted)}
     .badges{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
@@ -74,92 +62,99 @@
     .kudo{padding:16px;text-align:center;border:1px dashed var(--line);border-radius:14px;color:var(--muted)}
     .process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .step{padding:18px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
-    .logos{display:flex;gap:22px;flex-wrap:wrap;align-items:center;opacity:.8}
-    .logos img{height:28px;filter:grayscale(1);opacity:.8}
-
+    .logos{display:flex;gap:22px;flex-wrap:wrap;align-items:center;opacity:.9}
+    .logos img{height:28px;filter:grayscale(1);opacity:.9}
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:var(--ink)}
     textarea{min-height:130px}
-
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted)}
+    @media (max-width:920px){.grid,.features,.pricing,.kudos,.process,.contact-grid{grid-template-columns:1fr} .hero{padding-top:56px}}
 
-    @media (max-width:920px){
-      .grid,.features,.pricing,.kudos,.process,.contact-grid{grid-template-columns:1fr}
-      .hero{padding-top:56px}
-    }
+    /* Particles / subtle animation */
+    .floaty{animation:float 6s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    @keyframes glow{0%,100%{filter:drop-shadow(0 0 0 rgba(202,164,90,.0))}50%{filter:drop-shadow(0 0 10px rgba(202,164,90,.25))}}
+
+    /* Admin Terminal */
+    #adminToggle{position:fixed;right:14px;bottom:14px;font-size:12px;padding:8px 10px;border-radius:10px;background:#0e182b;border:1px solid var(--line);color:var(--muted);cursor:pointer;z-index:60}
+    #terminal{position:fixed;inset:auto 14px 14px auto;right:14px;bottom:54px;width:min(640px,95vw);max-height:70vh;display:none;flex-direction:column;background:#0b1221;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);z-index:70}
+    #termHead{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line)}
+    #termLog{padding:10px 14px;height:40vh;overflow:auto;font:12px/1.4 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:rgba(0,0,0,.25)}
+    #termIn{width:100%;padding:10px 14px;border:0;border-top:1px solid var(--line);background:#0a0f1b;color:var(--ink);font:13px ui-monospace,monospace;border-radius:0 0 14px 14px}
+    
+    /* Lang switch */
+    #langBtn{margin-left:10px}
   </style>
 </head>
 <body>
-  <!-- ====== NAV ====== -->
   <header>
     <div class="container nav">
       <div class="brand">
-        <div class="crest" aria-hidden="true"></div>
+        <div class="crest floaty" aria-hidden="true"></div>
         <span>Safeclicking</span>
       </div>
       <nav aria-label="Hauptmenü">
         <a href="#leistungen">Leistungen</a>
         <a href="#produkte">Pakete</a>
-        <a href="#cases">Referenzen</a>
+        <a href="#shop">Shop</a>
+        <a href="#standards">Standards</a>
+        <a href="#channels">Kanäle</a>
         <a href="#kontakt">Kontakt</a>
         <a class="btn" href="#kontakt">Kostenlose Erstberatung</a>
+        <button id="langBtn" class="btn ghost" onclick="toggleLang()">DE/PL</button>
       </nav>
       <button class="menu btn ghost" aria-label="Menü öffnen" onclick="toggleMobile()">Menü</button>
     </div>
   </header>
 
-  <!-- ====== HERO ====== -->
   <main>
     <section class="hero">
       <div class="container grid">
         <div>
-          <h1>From Scam Signals to <span style="color:var(--gold)">Bank‑Grade Intelligence</span></h1>
-          <p class="muted">Safeclicking ist Ihre königliche Cyberabwehr‑Einheit: Phishing‑Resilienz, Website‑ und DNS‑Härtung, Audits und Incident‑Readiness – speziell für KMU in AT/DE/CH.</p>
+          <h1 data-de="From Scam Signals to Bank‑Grade Intelligence" data-pl="Od sygnałów oszustw do bezpieczeństwa klasy bankowej">From Scam Signals to <span style="color:var(--gold)">Bank‑Grade Intelligence</span></h1>
+          <p class="muted" data-de="Safeclicking ist Ihre königliche Cyberabwehr‑Einheit: Phishing‑Resilienz, Website‑ & DNS‑Härtung, Audits und Webentwicklung für KMU in AT/DE/CH." data-pl="Safeclicking to Twoja królewska jednostka cyber‑obrony: odporność na phishing, hartowanie DNS/WWW, audyty oraz tworzenie stron dla MŚP w AT/DE/CH.">Safeclicking ist Ihre königliche Cyberabwehr‑Einheit: Phishing‑Resilienz, Website‑ & DNS‑Härtung, Audits und Webentwicklung für KMU in AT/DE/CH.</p>
           <div class="badges" aria-label="Highlights">
             <span class="badge">⚡ Sofort einsatzbereit</span>
             <span class="badge">🔒 DNS‑Härtung (SPF/DKIM/DMARC)</span>
             <span class="badge">🧪 Phishing‑Simulation</span>
+            <span class="badge">🛍️ Webshops & SEO</span>
             <span class="badge">📊 Evidenz‑Berichte (PDF/STIX)</span>
           </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
             <a class="btn" href="#produkte">Pakete ansehen</a>
-            <a class="btn ghost" href="#leistungen">Leistungen</a>
+            <a class="btn ghost" href="#shop">Shop</a>
           </div>
           <div class="logos" style="margin-top:18px" aria-label="Tech‑Stack">
             <img alt="SPF" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='28'%3E%3Ctext x='0' y='20' fill='%23b0bfd8' font-family='Arial' font-size='18'%3ESPF%3C/text%3E%3C/svg%3E">
             <img alt="DKIM" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='28'%3E%3Ctext x='0' y='20' fill='%23b0bfd8' font-family='Arial' font-size='18'%3EDKIM%3C/text%3E%3C/svg%3E">
             <img alt="DMARC" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='28'%3E%3Ctext x='0' y='20' fill='%23b0bfd8' font-family='Arial' font-size='18'%3EDMARC%3C/text%3E%3C/svg%3E">
-            <img alt="VT" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='28'%3E%3Ctext x='0' y='20' fill='%23b0bfd8' font-family='Arial' font-size='18'%3EVT%3C/text%3E%3C/svg%3E">
-            <img alt="OTX" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='28'%3E%3Ctext x='0' y='20' fill='%23b0bfd8' font-family='Arial' font-size='18'%3EOTX%3C/text%3E%3C/svg%3E">
+            <img alt="OWASP" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='28'%3E%3Ctext x='0' y='20' fill='%23b0bfd8' font-family='Arial' font-size='18'%3EOWASP%3C/text%3E%3C/svg%3E">
+            <img alt="CIS" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='28'%3E%3Ctext x='0' y='20' fill='%23b0bfd8' font-family='Arial' font-size='18'%3ECIS%3C/text%3E%3C/svg%3E">
           </div>
         </div>
         <div class="card p24" style="text-align:center">
-          <!-- Hero logo: zamień src na swoją ścieżkę do pliku (np. /img/crest.png). -->
-          <img src="logo-hero.png" alt="Safeclicking: Royal Cyber Defense" style="max-width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-sm)"/>
-          <p class="muted" style="margin:10px 0 0">Ersetze <code>logo-hero.png</code> swoim logo (ten plik najlepiej 1200×1800 PNG).</p>
+          <img class="floaty" src="logo-hero.png" alt="Safeclicking: Royal Cyber Defense" style="max-width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-sm)"/>
         </div>
       </div>
     </section>
 
-    <!-- ====== LEISTUNGEN ====== -->
     <section id="leistungen">
       <div class="container">
-        <h2>Leistungen</h2>
+        <h2 data-de="Leistungen" data-pl="Usługi">Leistungen</h2>
         <div class="features">
-          <div class="feature"><strong>Domain &amp; DNS‑Härtung</strong><span class="muted">SPF/DKIM/DMARC korrekt ausgerollt. Schutz vor Spoofing und Zustellproblemen.</span></div>
-          <div class="feature"><strong>Website‑Reputation &amp; Malware‑Checks</strong><span class="muted">VT/OTX, WHOIS/ASN, URL‑Score, SSL/TLS. Früherkennung kompromittierter Assets.</span></div>
-          <div class="feature"><strong>Phishing‑Resilienz</strong><span class="muted">Awareness‑Training (DE/PL), Simulationen, Reporting, wiederholbare Lernzyklen.</span></div>
-          <div class="feature"><strong>Incident‑Readiness</strong><span class="muted">Runbooks, Kontaktketten, First‑Response, Forensik‑Vorbereitung.</span></div>
-          <div class="feature"><strong>Reports für Entscheider</strong><span class="muted">Klar, visuell, Anweisungen „Was als Nächstes?“. Export als PDF, CSV, STIX.</span></div>
-          <div class="feature"><strong>Beratung &amp; Integration</strong><span class="muted">Schnellstart für KMU; Integrationen zu bestehenden Tools &amp; Workflows.</span></div>
+          <div class="feature"><strong>Domain &amp; DNS‑Härtung 🔐</strong><span class="muted">SPF/DKIM/DMARC korrekt ausgerollt. Schutz vor Spoofing und Zustellproblemen.</span></div>
+          <div class="feature"><strong>Website‑Reputation 🛡️</strong><span class="muted">VT/OTX, WHOIS/ASN, URL‑Score, SSL/TLS. Früherkennung kompromittierter Assets.</span></div>
+          <div class="feature"><strong>Phishing‑Resilienz 🧠</strong><span class="muted">Awareness‑Training (DE/PL), Simulationen, Reporting, wiederholbare Lernzyklen.</span></div>
+          <div class="feature"><strong>Webentwicklung & SEO ⚙️</strong><span class="muted">Landing‑Pages, Firmenwebsites, Webshops, Lighthouse‑Optimierung, technisches SEO.</span></div>
+          <div class="feature"><strong>Incident‑Readiness 🚨</strong><span class="muted">Runbooks, Kontaktketten, First‑Response, Forensik‑Vorbereitung.</span></div>
+          <div class="feature"><strong>Reports für Entscheider 📈</strong><span class="muted">Klar, visuell, „Was als Nächstes?“. Export als PDF, CSV, STIX.</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ====== PAKETE / PRICING ====== -->
     <section id="produkte">
       <div class="container">
-        <h2>Pakete</h2>
+        <h2>Pakete (Cyber & Web)</h2>
         <div class="pricing">
           <div class="price">
             <h3>Quick Check</h3>
@@ -185,13 +180,13 @@
             <a class="btn" href="#kontakt">Beliebtestes Paket</a>
           </div>
           <div class="price">
-            <h3>Incident Ready</h3>
-            <div class="muted">Retainer, monatliche Scans</div>
-            <div class="amt">ab 299 €/Monat</div>
+            <h3>Web Start</h3>
+            <div class="muted">Landing Page oder 1‑Pager</div>
+            <div class="amt">699 €</div>
             <ul>
-              <li>24h Reaktions‑SLA</li>
-              <li>Monatlicher Scan + Report</li>
-              <li>Phishing‑Simulationen</li>
+              <li>Design & Umsetzung (RWD)</li>
+              <li>Kontaktformular + Analytics</li>
+              <li>Technisches SEO‑Setup</li>
             </ul>
             <a class="btn" href="#kontakt">Angebot erhalten</a>
           </div>
@@ -205,32 +200,78 @@
       </div>
     </section>
 
-    <!-- ====== PROCESS ====== -->
-    <section>
+    <section id="shop">
       <div class="container">
-        <h2>Ablauf</h2>
-        <div class="process">
-          <div class="step"><strong>1. Kickoff</strong><div class="muted">Kurz‑Workshop (30–60 min), Zielbild &amp; Umfang.</div></div>
-          <div class="step"><strong>2. Scan</strong><div class="muted">Reputation, DNS, WHOIS/ASN, SSL/TLS, IOC‑Harvest.</div></div>
-          <div class="step"><strong>3. Maßnahmen</strong><div class="muted">Fixplan, Härtung, Awareness, Simulationen.</div></div>
-          <div class="step"><strong>4. Review</strong><div class="muted">Ergebnisse, KPIs, Roadmap 90 Tage.</div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====== CASES ====== -->
-    <section id="cases">
-      <div class="container">
-        <h2>Referenzen (Kurzfälle)</h2>
+        <h2 data-de="Shop – Dienstleistungen" data-pl="Sklep – Usługi">Shop – Dienstleistungen</h2>
         <div class="features">
-          <div class="feature"><strong>KMU Handel (AT)</strong><span class="muted">DMARC eingeführt → Spoofing‑Rate -100% • Zustellung +22%.</span></div>
-          <div class="feature"><strong>Agentur (DE)</strong><span class="muted">Phishing‑Training → Klickrate -75% • Reaktionszeit -40%.</span></div>
-          <div class="feature"><strong>NGO (PL)</strong><span class="muted">Fake‑Shop‑Netz identifiziert → Takedown binnen 48h.</span></div>
+          <div class="feature">
+            <strong data-de="Firmenwebsite – 5 Unterseiten 🏛️" data-pl="Strona firmowa – 5 podstron 🏛️">Firmenwebsite – 5 Unterseiten 🏛️</strong>
+            <span class="muted" data-de="Design & Umsetzung, Formulare, SEO-Start. 1 Überarbeitungsrunde."><b data-de="1299 €" data-pl="1299 €"></b> Design & Umsetzung, Formulare, SEO-Start. 1 Überarbeitungsrunde. <b>1299 €</b></span>
+          </div>
+          <div class="feature">
+            <strong data-de="Onlineshop bis 50 Produkte 🛍️" data-pl="Sklep do 50 produktów 🛍️">Onlineshop bis 50 Produkte 🛍️</strong>
+            <span class="muted" data-de="Warenkorb, Zahlungen, Kategorien, Schulung. 2199 €" data-pl="Koszyk, płatności, kategorie, szkolenie. 2199 €">Warenkorb, Zahlungen, Kategorien, Schulung. <b>2199 €</b></span>
+          </div>
+          <div class="feature">
+            <strong data-de="SEO Start 🚀" data-pl="SEO Start 🚀">SEO Start 🚀</strong>
+            <span class="muted" data-de="Keyword-Map, Meta, Schema, GSC/GA4. 399 €" data-pl="Mapa słów kluczowych, meta, schema, GSC/GA4. 399 €">Keyword-Map, Meta, Schema, GSC/GA4. <b>399 €</b></span>
+          </div>
+          <div class="feature">
+            <strong data-de="Wartung (monatlich) 🔧" data-pl="Opieka miesięczna 🔧">Wartung (monatlich) 🔧</strong>
+            <span class="muted" data-de="Updates, Backups, Monitoring. 99 €/Monat" data-pl="Aktualizacje, kopie zapasowe, monitoring. 99 €/mies.">Updates, Backups, Monitoring. <b>99 €/Monat</b></span>
+          </div>
+          <div class="feature">
+            <strong data-de="Logo & Branding ✒️" data-pl="Logo & Branding ✒️">Logo & Branding ✒️</strong>
+            <span class="muted" data-de="Wort-/Bildmarke, Farbwelt, Typografie, Styleguide (PDF). 349 €" data-pl="Znak, paleta, typografia, księga znaku PDF. 349 €">Wort-/Bildmarke, Farbwelt, Typografie, Styleguide (PDF). <b>349 €</b></span>
+          </div>
+          <div class="feature">
+            <strong data-de="Security-Audit 🔍" data-pl="Audyt bezpieczeństwa 🔍">Security-Audit 🔍</strong>
+            <span class="muted" data-de="WWW/DNS/E-Mail + Maßnahmenplan. 499 €" data-pl="WWW/DNS/Email + plan działań. 499 €">WWW/DNS/E-Mail + Maßnahmenplan. <b>499 €</b></span>
+          </div>
+        </div>
+        <div class="card p24" style="margin-top:16px">
+          <strong data-de="Stundensätze (EU-marktüblich)" data-pl="Stawki godzinowe (rynek UE)">Stundensätze (EU-marktüblich)</strong>
+          <p class="muted" data-de="Richtwerte zzgl. USt.: Junior 65 €/h • Standard 85 €/h • Senior 120 €/h. Fixpreise nach Briefing." data-pl="Orientacyjnie, + VAT: Junior 65 €/h • Standard 85 €/h • Senior 120 €/h. Ceny stałe po briefie.">Richtwerte zzgl. USt.: Junior 65 €/h • Standard 85 €/h • Senior 120 €/h. Fixpreise nach Briefing.</p>
         </div>
       </div>
     </section>
 
-    <!-- ====== KONTAKT ====== -->
+    <section id="standards">
+      <div class="container">
+        <h2>Security & Compliance Standards</h2>
+        <div class="features">
+          <div class="feature"><strong>ISO/IEC 27001‑aligned</strong><span class="muted">Arbeit gemäß Controls & Risiko‑Prozessen (keine Zertifizierung beansprucht).</span></div>
+          <div class="feature"><strong>OWASP Top 10</strong><span class="muted">Entwicklung & Reviews unter Berücksichtigung gängiger Schwachstellen.</span></div>
+          <div class="feature"><strong>NIST CSF / CIS v8</strong><span class="muted">Best Practices für Identify‑Protect‑Detect‑Respond‑Recover.</span></div>
+          <div class="feature"><strong>GDPR / DSGVO</strong><span class="muted">Privacy‑by‑Design, Data‑Processing‑Hinweise, Minimalprinzip.</span></div>
+          <div class="feature"><strong>E‑Mail Security</strong><span class="muted">SPF/DKIM/DMARC, MTA‑STS, TLS Reporting – Zustellbarkeit & Schutz.</span></div>
+          <div class="feature"><strong>Monitoring</strong><span class="muted">Uptime & Reputation‑Checks, verständliche Monatsreports.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="channels">
+      <div class="container">
+        <h2>Kanäle</h2>
+        <div class="features">
+          <div class="feature">
+            <strong>YouTube</strong>
+            <p class="muted">Offizieller Kanal: <a id="ytLink" href="#" target="_blank" rel="noopener">noch nicht gesetzt</a></p>
+            <div id="ytEmbed" class="card p24 muted">Füge einen YouTube‑Kanal im Admin‑Terminal hinzu: <code>set yt https://youtube.com/@deinKanal</code></div>
+          </div>
+          <div class="feature">
+            <strong>TikTok</strong>
+            <p class="muted">Offizieller Kanal: <a id="ttLink" href="#" target="_blank" rel="noopener">noch nicht gesetzt</a></p>
+            <div id="ttEmbed" class="card p24 muted">Füge einen TikTok‑Kanal hinzu: <code>set tt https://www.tiktok.com/@deinKanal</code></div>
+          </div>
+          <div class="feature">
+            <strong>Kontakt (E‑Mail)</strong>
+            <p class="muted">Schreib uns: <a id="mailLink" href="mailto:sicherklickat@sicherklickat.com">sicherklickat@sicherklickat.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="kontakt">
       <div class="container">
         <h2>Kontakt</h2>
@@ -241,14 +282,14 @@
             <label style="margin-top:10px">E‑Mail</label>
             <input required type="email" name="email" placeholder="it@muster.de" />
             <label style="margin-top:10px">Nachricht</label>
-            <textarea name="msg" placeholder="Kurz: Domains, Nutzerzahl, gewünschtes Paket"></textarea>
+            <textarea name="msg" placeholder="Kurz: Domains/Seiten, Nutzerzahl, gewünschtes Paket"></textarea>
             <button class="btn" type="submit" style="margin-top:14px">Absenden</button>
             <p class="muted" style="margin-top:8px">Formular nutzt <code>mailto:</code> – funktioniert ohne Server. Alternativ direkt mailen.</p>
           </form>
           <div class="card p24">
             <p><strong>Direkt</strong></p>
             <p class="muted">
-              E‑Mail: <a href="mailto:kontakt@safeclicking.at">kontakt@safeclicking.at</a><br/>
+              E‑Mail: <a id="directMail" href="mailto:sicherklickat@sicherklickat.com">sicherklickat@sicherklickat.com</a><br/>
               WhatsApp/Telefon (AT): <a href="https://wa.me/436640000000">+43 664 000 00 00</a><br/>
               Standort: Wien / Hausbrunn
             </p>
@@ -267,12 +308,52 @@
     </div>
   </footer>
 
-  <!-- ====== Scripts ====== -->
+  <button id="adminToggle" title="Admin‑Terminal öffnen">⌘ Admin</button>
+  <div id="terminal" role="dialog" aria-modal="true" aria-label="Admin Terminal">
+    <div id="termHead"><strong>Safeclicking Admin‑Terminal</strong><button class="btn ghost" onclick="toggleTerm()">Schließen</button></div>
+    <div id="termLog"></div>
+    <input id="termIn" placeholder="> help | login | set email/yt/tt ..."/>
+  </div>
+
   <script>
-    // Set year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mailto helper
+    // ===== Config (persisted in localStorage) =====
+    const CFG_KEY = 'sc_cfg_v1';
+    const defaults = { email: 'sicherklickat@sicherklickat.com', yt: '', tt: '', pass: 'change-me', lang: 'de' };
+    const cfg = Object.assign({}, defaults, JSON.parse(localStorage.getItem(CFG_KEY) || '{}'));
+    function saveCfg(){ localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); renderDynamic(); }
+
+    // Dynamic wiring for channels + email + language
+    function renderDynamic(){
+      // email links
+      const mailHref = 'mailto:' + cfg.email;
+      ['directMail','mailLink'].forEach(id=>{ const el=document.getElementById(id); if(el){ el.href=mailHref; el.textContent=cfg.email; }});
+      window._sendTo = cfg.email;
+      // YT
+      const ytA = document.getElementById('ytLink'); const ytE = document.getElementById('ytEmbed');
+      if(cfg.yt){ ytA.href = cfg.yt; ytA.textContent = cfg.yt; ytE.innerHTML = `<iframe width="100%" height="240" src="${embedYouTube(cfg.yt)}" frameborder="0" allowfullscreen></iframe>`; }
+      // TikTok
+      const ttA = document.getElementById('ttLink'); const ttE = document.getElementById('ttEmbed');
+      if(cfg.tt){ ttA.href = cfg.tt; ttA.textContent = cfg.tt; ttE.textContent = 'Kanal verlinkt.'; }
+      // Language
+      document.documentElement.setAttribute('data-lang', cfg.lang);
+      document.querySelectorAll('[data-de]').forEach(el=>{ el.textContent = (cfg.lang==='pl')? el.getAttribute('data-pl') : el.getAttribute('data-de'); });
+    }
+
+    function toggleLang(){ cfg.lang = (cfg.lang==='pl') ? 'de' : 'pl'; saveCfg(); }
+
+    function embedYouTube(url){
+      try{
+        const u = new URL(url);
+        if(u.hostname.includes('youtu.be')) return `https://www.youtube.com/embed/${u.pathname.slice(1)}`;
+        if(u.searchParams.get('v')) return `https://www.youtube.com/embed/${u.searchParams.get('v')}`;
+        if(u.pathname.startsWith('/@')) return `https://www.youtube.com/embed?listType=user_uploads&list=${u.pathname.slice(2)}`;
+      }catch(e){}
+      return 'about:blank';
+    }
+
+    // ===== Contact form (mailto, no server) =====
     function sendMail(e){
       e.preventDefault();
       const f = e.target;
@@ -281,33 +362,80 @@
       const msg = encodeURIComponent(f.msg.value.trim());
       const subject = `Anfrage — ${decodeURIComponent(name)}`;
       const body = `Firma/Name: ${decodeURIComponent(name)}%0AEmail: ${decodeURIComponent(email)}%0A%0ANachricht:%0A${decodeURIComponent(msg)}`;
-      window.location.href = `mailto:kontakt@safeclicking.at?subject=${encodeURIComponent(subject)}&body=${body}`;
+      window.location.href = `mailto:${encodeURIComponent(window._sendTo||cfg.email)}?subject=${encodeURIComponent(subject)}&body=${body}`;
     }
 
-    // Mobile menu minimal
+    // ===== Mobile menu =====
     function toggleMobile(){
       const nav = document.querySelector('header nav');
       if(!nav) return; 
       if(getComputedStyle(nav).display==='none'){ nav.style.display='flex'; nav.style.flexWrap='wrap'; }
       else{ nav.style.display='none'; }
     }
+
+    // ===== Admin terminal =====
+    const term = document.getElementById('terminal');
+    const tlog = document.getElementById('termLog');
+    const tin = document.getElementById('termIn');
+    const toggleBtn = document.getElementById('adminToggle');
+    let authed = false;
+
+    function toggleTerm(){ term.style.display = (term.style.display==='flex')?'none':'flex'; tin.focus(); }
+    toggleBtn.addEventListener('click', toggleTerm);
+    document.addEventListener('keydown', (e)=>{ if((e.ctrlKey||e.metaKey) && e.key==='`'){ toggleTerm(); }});
+
+    function log(line){ tlog.innerHTML += `<div>> ${line}</div>`; tlog.scrollTop = tlog.scrollHeight; }
+    function help(){
+      log('Befehle:');
+      log('help — Befehle anzeigen');
+      log('login <pass> — einloggen (Standard: change-me)');
+      log('set email <addr> — Zieladresse ändern');
+      log('set yt <url> — YouTube-Kanal/URL');
+      log('set tt <url> — TikTok-Kanal/URL');
+      log('set lang de|pl — Sprache umschalten');
+      log('get — aktuelle Konfiguration anzeigen');
+      log('reset — Konfiguration zurücksetzen');
+      log('exit — Terminal schließen');
+    }
+
+    tin.addEventListener('keydown', (e)=>{
+      if(e.key==='Enter'){
+        const cmd = tin.value.trim();
+        tin.value='';
+        if(!cmd) return;
+        const [c,...rest] = cmd.split(' ');
+        if(c==='help'){ help(); return; }
+        if(c==='exit'){ toggleTerm(); return; }
+        if(c==='login'){ const p = rest.join(' '); if(p===cfg.pass){ authed=true; log('OK: angemeldet.'); } else { log('Fehler: falsches Passwort.'); } return; }
+        if(!authed){ log('Nicht angemeldet. Nutze: login <pass>'); return; }
+        if(c==='set'){
+          const key = rest.shift(); const val = rest.join(' ');
+          if(['email','yt','tt','pass','lang'].includes(key)){
+            cfg[key] = val; saveCfg(); log(`OK: ${key} gesetzt.`);
+          } else { log('Unbekannter Schlüssel. Erlaubt: email, yt, tt, pass, lang'); }
+          return;
+        }
+        if(c==='get'){ log(JSON.stringify(cfg)); return; }
+        if(c==='reset'){ localStorage.removeItem(CFG_KEY); Object.assign(cfg, defaults); saveCfg(); log('OK: zurückgesetzt.'); return; }
+        log('Unbekannter Befehl. help');
+      }
+    });
+
+    // Init
+    renderDynamic();
   </script>
 
-  <!-- ====== JSON-LD (Organization) ====== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Safeclicking",
-    "url": "https://safeclicking.at/",
-    "logo": "https://safeclicking.at/logo-hero.png",
-    "sameAs": [
-      "https://www.linkedin.com/",
-      "https://github.com/"
-    ],
+    "url": "https://sicherklick-at.github.io/",
+    "logo": "https://sicherklick-at.github.io/logo-hero.png",
+    "sameAs": [],
     "contactPoint": [{
       "@type": "ContactPoint",
-      "telephone": "+43 664 000 00 00",
+      "email": "sicherklickat@sicherklickat.com",
       "contactType": "customer support",
       "availableLanguage": ["German","Polish","English"]
     }]
