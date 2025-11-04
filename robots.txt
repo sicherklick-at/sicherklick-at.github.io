@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sicherklick-at.github.io/sitemap.xml
