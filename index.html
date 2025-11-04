@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Safeclicking — Königliche Cyberabwehr & Webentwicklung</title>
+  <title>Safeclicking — Cyberabwehr, Webentwicklung & SEO für KMU (DE/PL)</title>
   <meta name="description" content="Safeclicking: Cyberabwehr, Website‑Entwicklung und SEO für KMU. Von Scam‑Signalen zu Bank‑Grade Intelligence. Audits, DNS‑Härtung, Phishing‑Schulungen, Webshops und Wartung." />
   <meta name="theme-color" content="#0a1220" />
-  <meta property="og:title" content="Safeclicking — Königliche Cyberabwehr & Webentwicklung" />
-  <meta property="og:description" content="Audits, DNS‑Härtung, Webshops, SEO, Schulungen. Royal navy + gold design, schnell, messbar, bezahlbar." />
+  <meta property="og:title" content="Safeclicking — Cyberabwehr, Webentwicklung & SEO für KMU (DE/PL)" />
+  <meta property="og:description" content="Von Scam‑Signalen zu Bank‑Grade Intelligence. Cyberabwehr, Webentwicklung, Webshops, SEO, Audits & Schulungen. Schnell, messbar, bezahlbar." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="logo-hero.png" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231a2740'/%3E%3Ctext x='50' y='62' font-size='48' text-anchor='middle' fill='%23caa45a' font-family='Georgia,serif'%3ESC%3C/text%3E%3C/svg%3E">
@@ -85,6 +85,7 @@
     /* Lang switch */
     #langBtn{margin-left:10px}
   </style>
+  <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 <body>
   <header>
@@ -106,6 +107,17 @@
       <button class="menu btn ghost" aria-label="Menü öffnen" onclick="toggleMobile()">Menü</button>
     </div>
   </header>
+
+  <!-- Sticky CTA Bar -->
+  <div id="stickyCta" style="position:sticky;top:56px;z-index:45;background:rgba(10,18,32,.8);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line)">
+    <div class="container" style="display:flex;gap:10px;align-items:center;justify-content:space-between;padding:8px 0;flex-wrap:wrap">
+      <span class="muted" data-de="Kostenlose Erstberatung: 20 Minuten Strategiecall" data-pl="Darmowa konsultacja: 20 minut strategii">Kostenlose Erstberatung: 20 Minuten Strategiecall</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a class="btn" href="#kontakt">Termin sichern</a>
+        <a class="btn ghost" href="#produkte">Pakete ansehen</a>
+      </div>
+    </div>
+  </div>
 
   <main>
     <section class="hero">
@@ -133,7 +145,7 @@
           </div>
         </div>
         <div class="card p24" style="text-align:center">
-          <img class="floaty" src="logo-hero.png" alt="Safeclicking: Royal Cyber Defense" style="max-width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-sm)"/>
+          <img class="floaty" src="logo-hero.png?v=3" alt="Safeclicking: Royal Cyber Defense" style="max-width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-sm)"/>
         </div>
       </div>
     </section>
@@ -299,6 +311,18 @@
         </div>
       </div>
     </section>
+      <!-- ====== FAQ ====== -->
+    <section id="faq">
+      <div class="container">
+        <h2 data-de="FAQ" data-pl="FAQ">FAQ</h2>
+        <div class="features">
+          <details class="feature"><summary><strong data-de="Wie schnell geht der Go‑Live?" data-pl="Jak szybko uruchomienie?">Wie schnell geht der Go‑Live?</strong></summary><span class="muted" data-de="Landing Page 3–7 Tage, Firmenwebsite 10–14 Tage, Shop 2–3 Wochen (abhängig vom Content)." data-pl="Landing page 3–7 dni, strona firmowa 10–14 dni, sklep 2–3 tygodnie (zależnie od treści).">Landing Page 3–7 Tage…</span></details>
+          <details class="feature"><summary><strong data-de="Arbeitet ihr mit WordPress oder statisch?" data-pl="WordPress czy statycznie?">Arbeitet ihr mit WordPress oder statisch?</strong></summary><span class="muted" data-de="Beides. Für maximale Geschwindigkeit/Preis oft statisch (GitHub Pages), für Blog/Shop WordPress/Headless." data-pl="Oba. Dla szybkości często statycznie (GitHub Pages), dla bloga/sklepu WordPress/Headless.">Beides…</span></details>
+          <details class="feature"><summary><strong data-de="Wie läuft die Abnahme/Revisionen?" data-pl="Jak wyglądają poprawki?">Wie läuft die Abnahme/Revisionen?</strong></summary><span class="muted" data-de="1–2 Revisionsrunden je nach Paket. Klare checklistenbasierte Abnahme." data-pl="1–2 rundy poprawek zależnie od pakietu. Odbiór na checklistę.">1–2 Runden…</span></details>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -307,6 +331,12 @@
       <span class="muted"><a href="#">Impressum</a> • <a href="#">Datenschutz</a></span>
     </div>
   </footer>
+
+  <!-- Exit intent mini-CTA -->
+  <div id="exitCta" style="display:none;position:fixed;inset:auto 14px 14px auto;right:14px;bottom:14px;background:#0e182b;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px;z-index:80">
+    <div class="muted" style="margin-bottom:8px" data-de="Noch Fragen? 20‑minütiger kostenfreier Call." data-pl="Masz pytania? 20‑min darmowej rozmowy.">Noch Fragen? 20‑minütiger kostenfreier Call.</div>
+    <a class="btn" href="#kontakt">Jetzt Termin sichern</a>
+  </div>
 
   <button id="adminToggle" title="Admin‑Terminal öffnen">⌘ Admin</button>
   <div id="terminal" role="dialog" aria-modal="true" aria-label="Admin Terminal">
@@ -440,6 +470,27 @@
       "availableLanguage": ["German","Polish","English"]
     }]
   }
+  </script>
+  <!-- ====== Structured Data: Products + Breadcrumb ====== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {"@type":"Product","name":"Quick Check","description":"Ein Domain‑Scan + Kurzbericht","offers":{"@type":"Offer","priceCurrency":"EUR","price":"149"}},
+      {"@type":"Product","name":"Business Shield","description":"Vollscan + Schulung","offers":{"@type":"Offer","priceCurrency":"EUR","price":"749"}},
+      {"@type":"Product","name":"Web Start","description":"Landing Page oder 1‑Pager","offers":{"@type":"Offer","priceCurrency":"EUR","price":"699"}},
+      {"@type":"Product","name":"Firmenwebsite 5 Unterseiten","description":"Design & Umsetzung, Formulare, SEO‑Start","offers":{"@type":"Offer","priceCurrency":"EUR","price":"1299"}},
+      {"@type":"Product","name":"Onlineshop bis 50 Produkte","description":"Warenkorb, Zahlungen, Kategorien, Schulung","offers":{"@type":"Offer","priceCurrency":"EUR","price":"2199"}},
+      {"@type":"Product","name":"SEO Start","description":"Keyword‑Map, Meta, Schema, GSC/GA4","offers":{"@type":"Offer","priceCurrency":"EUR","price":"399"}},
+      {"@type":"Product","name":"Wartung (monatlich)","description":"Updates, Backups, Monitoring","offers":{"@type":"Offer","priceCurrency":"EUR","price":"99","priceValidUntil":"2026-12-31"}}
+    ]
+  }
+  </script>
+
+  <script>
+    // Exit intent (naive): pokaż CTA gdy kursor wyjedzie poza górę okna
+    let exitShown=false;document.addEventListener('mouseout',e=>{if(!exitShown && e.clientY<=0){document.getElementById('exitCta').style.display='block';exitShown=true;}});
   </script>
 </body>
 </html>
