@@ -1,6 +1,0 @@
-git clone https://github.com/sicherklick-at/sicherklick-at.github.io
-cd sicherklick-at.github.io
-# wklej do index.html (utwórz plik), dołóż logo-hero.png
-git add index.html logo-hero.png
-git commit -m "Initial site"
-git push
