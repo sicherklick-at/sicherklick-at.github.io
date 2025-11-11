@@ -3,20 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SicherKlick-AT — Cyberabwehr & Webentwicklung in Österreich (DE/PL)</title>
-  <meta name="description" content="Cyberabwehr für KMU in Österreich: DNS- & E-Mail-Härtung (SPF/DKIM/DMARC), Website-Reputation, Webentwicklung & SEO. DE/PL." />
-  <meta name="robots" content="index,follow" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="SicherKlick-AT — Cyberabwehr & Webentwicklung" />
-  <meta property="og:description" content="Phishing-Resilienz, DNS-Härtung, Webdev & SEO. 20-min Erstberatung gratis." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sicherklick-at.github.io/" />
-  <meta property="og:image" content="assets/og-image.png" />
-  <meta property="og:site_name" content="SicherKlick-AT" />
-  <meta property="og:locale" content="de_AT">
-  <meta property="og:locale:alternate" content="de_DE">
-  <meta property="og:locale:alternate" content="pl_PL">
+  <title>IT-Dienstleister & IT-Sicherheit in Wien/Niederösterreich | SicherKlick-AT</title>
+  <meta name="description" content="IT-Dienstleister für KMU in Wien & Niederösterreich: IT-Sicherheit, E-Mail-Zustellung (SPF/DKIM/DMARC), Netzwerk & Microsoft 365, Webentwicklung & SEO. Schnelle Hilfe & klare Pakete." />
+  <meta name="robots" content="index,follow" />
 
   <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://sicherklick-at.github.io/">
@@ -24,13 +14,40 @@
   <link rel="alternate" href="https://sicherklick-at.github.io/" hreflang="de-AT">
   <link rel="alternate" href="https://sicherklick-at.github.io/" hreflang="pl-PL">
 
-  <!-- Identity link -->
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="SicherKlick-AT — IT-Dienstleister & Cyberabwehr" />
+  <meta property="og:description" content="IT-Sicherheit, E-Mail-Zustellung, Netzwerk, Webentwicklung & SEO. 20-Min Erstberatung gratis." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sicherklick-at.github.io/" />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta property="og:site_name" content="SicherKlick-AT" />
+  <meta property="og:locale" content="de_AT">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="pl_PL">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Identity -->
   <link rel="me" href="https://www.facebook.com/profile.php?id=61583312521651">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css" />
+  
+  <!-- WebSite + SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"SicherKlick-AT",
+    "url":"https://sicherklick-at.github.io/",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://sicherklick-at.github.io/?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
 
-  <!-- schema.org LocalBusiness (AT) -->
+  <!-- LocalBusiness (AT) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -46,7 +63,7 @@
       "addressRegion":"Niederösterreich",
       "addressCountry":"AT"
     },
-    "areaServed":{"@type":"Country","name":"Austria"},
+    "areaServed":["Wien","Niederösterreich","Österreich"],
     "knowsLanguage":["de","pl","en"],
     "priceRange":"€€",
     "sameAs":[
@@ -54,7 +71,19 @@
       "https://www.youtube.com/@SicherKlickAT",
       "https://www.tiktok.com/@SicherKlickAT"
     ],
-    "description":"Cyberabwehr, DNS/E-Mail-Härtung (SPF/DKIM/DMARC), Website-Reputation, Webentwicklung & SEO für KMU in Österreich."
+    "description":"IT-Dienstleister & IT-Sicherheit in Österreich: E-Mail-Zustellung (SPF/DKIM/DMARC), Netzwerk, Webentwicklung & SEO."
+  }
+  </script>
+
+  <!-- Service (IT) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Service",
+    "serviceType":"IT-Dienstleister & IT-Sicherheit",
+    "provider":{"@type":"LocalBusiness","name":"SicherKlick-AT"},
+    "areaServed":["Wien","Niederösterreich"],
+    "offers":{"@type":"AggregateOffer","lowPrice":"149","highPrice":"749","priceCurrency":"EUR"}
   }
   </script>
 </head>
@@ -64,17 +93,19 @@
   <header class="container site-header">
     <div class="nav">
       <div class="brand">
-        <img src="assets/logo-lockup.svg" alt="SicherKlick-AT" width="260" height="72"/>
+        <img src="assets/logo-lockup.svg" alt="SicherKlick-AT Logo" width="260" height="72" loading="eager" />
       </div>
-      <nav aria-label="Primary">
-        <a href="#leistungen" data-i18n="nav.leistungen">Leistungen</a>
+      <nav aria-label="Hauptnavigation">
+        <a href="#it" data-i18n="nav.it">IT-Services</a>
+        <a href="#cyber" data-i18n="nav.cyber">Cyberabwehr</a>
+        <a href="#web" data-i18n="nav.web">Web & SEO</a>
         <a href="#pakete" data-i18n="nav.pakete">Pakete</a>
-        <a href="#prozess" data-i18n="nav.prozess">Prozess</a>
-        <a href="#referenzen" data-i18n="nav.referenzen">Referenzen</a>
+        <a href="#cases" data-i18n="nav.cases">Cases</a>
+        <a href="#blog" data-i18n="nav.blog">Blog</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
         <a href="#kontakt" class="cta" data-i18n="nav.kontakt">Kontakt</a>
       </nav>
-      <div class="lang" aria-label="Language switch">
+      <div class="lang" aria-label="Sprache">
         <button id="lang-de" class="active" aria-pressed="true">DE</button>
         <button id="lang-pl" aria-pressed="false">PL</button>
       </div>
@@ -82,21 +113,20 @@
   </header>
 
   <main id="main">
+    <!-- HERO -->
     <section class="hero container" id="call">
       <div class="hero-text">
-        <h1 data-i18n="hero.h1">Von Scam-Signalen zu Intelligence in Bankqualität</h1>
+        <h1 data-i18n="hero.h1">IT-Dienstleister & IT-Sicherheit für KMU in Wien & Niederösterreich</h1>
         <p class="lead" data-i18n="hero.p">
-          SicherKlick-AT stärkt KMU gegen Phishing und Ausfälle: DNS- &amp; E-Mail-Härtung (SPF/DKIM/DMARC), Website-Reputation, Webentwicklung und SEO in AT/DE/CH.
+          E-Mail-Zustellung (SPF/DKIM/DMARC), Netzwerk &amp; Microsoft 365, Phishing-Resilienz, Website-Reputation, Webentwicklung &amp; SEO.
         </p>
-        <div class="hero-cta">
+        <form class="inline-form" role="search" action="#kontakt" onsubmit="return false;">
+          <input id="site-search" name="q" type="search" placeholder="Was brauchen Sie? z. B. DMARC, M365, VPN…" aria-label="Suche auf der Seite">
           <a class="btn" href="#pakete" data-i18n="cta.pakete">Pakete ansehen</a>
           <a class="btn ghost" href="https://wa.me/436640000000?text=Hallo%2C%20ich%20brauche%20einen%20Quick%20Check%20(DNS%2FDMARC)" target="_blank" rel="noopener" data-i18n="cta.termin">Termin sichern (20&nbsp;Min)</a>
-        </div>
-        <ul class="badges" role="list">
-          <li>SPF/DKIM/DMARC</li>
-          <li>Phishing-Simulation</li>
-          <li>Webshops &amp; SEO</li>
-          <li>PDF/STIX-Reports</li>
+        </form>
+        <ul class="badges" role="list" aria-label="Kompetenzen">
+          <li>SPF/DKIM/DMARC</li><li>Phishing-Simulation</li><li>Microsoft 365</li><li>WLAN &amp; VPN</li><li>Webshops &amp; SEO</li>
         </ul>
         <p class="trust">Österreich-Fokus • ISO-Mindset • OWASP • NIST CSF • DSGVO</p>
       </div>
@@ -105,46 +135,99 @@
       </div>
     </section>
 
-    <section id="leistungen" class="container section">
-      <h2 data-i18n="leistungen.h2">Leistungen</h2>
+    <!-- TRUST / LOGOS (placeholdery) -->
+    <section class="container trustbar" aria-label="Zertifikate & Tools">
+      <ul class="trust-logos" role="list">
+        <li><span class="pill">DMARC</span></li>
+        <li><span class="pill">MTA-STS</span></li>
+        <li><span class="pill">TLS-RPT</span></li>
+        <li><span class="pill">OWASP</span></li>
+        <li><span class="pill">Lighthouse 95+</span></li>
+      </ul>
+    </section>
+
+    <!-- IT SERVICES -->
+    <section id="it" class="container section">
+      <h2 data-i18n="it.h2">IT-Services (KMU)</h2>
       <div class="grid3">
         <article class="card">
-          <h3>DNS &amp; E-Mail-Sicherheit</h3>
-          <p>SPF/DKIM/DMARC plus MTA-STS/TLS-RPT. Schutz vor Spoofing und Zustellproblemen.</p>
-          <ul>
-            <li>Konfiguration &amp; Validierung der DNS-Einträge</li>
-            <li>Analyse der Zustellbarkeit</li>
-            <li>DMARC-Policy: p=none → quarantine → reject</li>
-          </ul>
+          <h3>Managed IT &amp; Support</h3>
+          <p>Proaktive Betreuung: Updates, Backup, Monitoring. Kurze Reaktionszeiten, klare SLAs.</p>
+          <ul><li>Microsoft 365 / E-Mail</li><li>Arbeitsplätze &amp; Endgeräte</li><li>Remote &amp; Vor-Ort</li></ul>
         </article>
         <article class="card">
-          <h3>Website-Reputation</h3>
-          <p>WHOIS/ASN, SSL/TLS, Reputationschecks (VT/OTX), URL-Scanning. Früherkennung von Risiken.</p>
+          <h3>Netzwerk &amp; Sicherheit</h3>
+          <p>Firewall, WLAN, VPN, Segmentierung. Härtung gegen Phishing &amp; Ransomware.</p>
+          <ul><li>SPF/DKIM/DMARC + MTA-STS/TLS-RPT</li><li>Endpoint-Schutz</li><li>Security-Check 24–72h</li></ul>
         </article>
         <article class="card">
-          <h3>Webentwicklung &amp; SEO</h3>
-          <p>Mehrsprachige Websites &amp; Shops (DE/PL), Lighthouse 90+, schema.org, Analytics &amp; Monitoring.</p>
+          <h3>Migration &amp; Zustellung</h3>
+          <p>Providerwechsel ohne Ausfälle, Behebung von Bounce/Spam-Problemen.</p>
+          <ul><li>DNS/WHOIS-Korrekturen</li><li>Postfächer &amp; Aliasse</li><li>Dokumentierter Ablauf</li></ul>
         </article>
       </div>
     </section>
 
+    <!-- CYBER -->
+    <section id="cyber" class="container section">
+      <h2 data-i18n="cyber.h2">Cyberabwehr</h2>
+      <div class="grid3">
+        <article class="card">
+          <h3>DNS &amp; E-Mail-Sicherheit</h3>
+          <p>SPF/DKIM/DMARC, MTA-STS/TLS-RPT. Schutz vor Spoofing und Zustellproblemen.</p>
+        </article>
+        <article class="card">
+          <h3>Reputation &amp; Scans</h3>
+          <p>WHOIS/ASN, SSL/TLS, VT/OTX, URL-Scanning. Früherkennung von Risiken.</p>
+        </article>
+        <article class="card">
+          <h3>Awareness &amp; Simulation</h3>
+          <p>Schulungen (DE/PL), Phishing-Kampagnen, Monatsreporting.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- WEB & SEO -->
+    <section id="web" class="container section">
+      <h2 data-i18n="web.h2">Webentwicklung &amp; SEO</h2>
+      <div class="grid3">
+        <article class="card">
+          <h3>Leichte Websites</h3>
+          <p>Mehrsprachig (DE/PL), Lighthouse 90+, schema.org, Analytics & Monitoring.</p>
+        </article>
+        <article class="card">
+          <h3>Shops &amp; Angebote</h3>
+          <p>Landingpages, Formulary, PDF-Angebote, Tracking & Consent.</p>
+        </article>
+        <article class="card">
+          <h3>Lokales SEO (AT)</h3>
+          <p>GBP, Herold.at, WKO-A/Z, strukturierte Daten, interne Verlinkung.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PAKETE -->
     <section id="pakete" class="container section">
-      <h2 data-i18n="pakete.h2">Pakete (Cyber &amp; Web)</h2>
+      <h2 data-i18n="pakete.h2">Pakete (Cyber &amp; IT)</h2>
       <div class="grid3 price-grid">
-        <article class="card price">
+        <article class="card price" itemscope itemtype="https://schema.org/Product">
+          <meta itemprop="name" content="Quick Check">
           <h3>Quick Check</h3>
-          <p class="price-tag">149 €</p>
+          <p class="price-tag"><span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <span itemprop="priceCurrency" content="EUR">€</span><span itemprop="price" content="149">149</span>
+          </span></p>
           <ul>
-            <li>DNS/SSL- &amp; Reputationscheck</li>
-            <li>20-min Ergebnis-Call</li>
-            <li>PDF-Kurzbericht</li>
+            <li>DNS/SSL &amp; Reputationscheck</li><li>20-min Ergebnis-Call</li><li>PDF-Kurzbericht</li>
           </ul>
           <a class="btn" href="#kontakt">Jetzt anfragen</a>
         </article>
-        <article class="card price featured" aria-label="Beliebtestes Paket">
+        <article class="card price featured" itemscope itemtype="https://schema.org/Product" aria-label="Beliebtestes Paket">
           <div class="badge">Beliebtestes Paket</div>
+          <meta itemprop="name" content="Business Shield">
           <h3>Business Shield</h3>
-          <p class="price-tag">749 €</p>
+          <p class="price-tag"><span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <span itemprop="priceCurrency" content="EUR">€</span><span itemprop="price" content="749">749</span>
+          </span></p>
           <ul>
             <li>VT/OTX-Reputation &amp; WHOIS/ASN</li>
             <li>SPF/DKIM/DMARC-Review</li>
@@ -153,68 +236,111 @@
           </ul>
           <a class="btn" href="#kontakt">Anfragen</a>
         </article>
-        <article class="card price">
+        <article class="card price" itemscope itemtype="https://schema.org/Product">
+          <meta itemprop="name" content="Web Start">
           <h3>Web Start</h3>
-          <p class="price-tag">699 €</p>
+          <p class="price-tag"><span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <span itemprop="priceCurrency" content="EUR">€</span><span itemprop="price" content="699">699</span>
+          </span></p>
           <ul>
-            <li>RWD-Firmenwebsite (DE/PL)</li>
-            <li>Formulare &amp; Analytics</li>
-            <li>Technisches SEO-Setup</li>
+            <li>RWD-Firmenwebsite (DE/PL)</li><li>Formulare &amp; Analytics</li><li>Technisches SEO-Setup</li>
           </ul>
           <a class="btn" href="#kontakt">Angebot erhalten</a>
         </article>
       </div>
       <div class="kpis">
-        <span>⏱️ Go-Live in 24–72&nbsp;h</span>
-        <span>📈 Messbare KPIs</span>
-        <span>🧭 Vendor-neutral</span>
-        <span>🌐 Mehrsprachig (DE/PL)</span>
+        <span>⏱️ Go-Live in 24–72&nbsp;h</span><span>📈 Messbare KPIs</span><span>🧭 Vendor-neutral</span><span>🌐 Mehrsprachig (DE/PL)</span>
       </div>
     </section>
 
-    <section id="prozess" class="container section">
-      <h2 data-i18n="prozess.h2">Prozess</h2>
-      <ol class="process">
-        <li><strong>Briefing</strong> — 15–30-min Call, Ziele &amp; Scope.</li>
-        <li><strong>Audit</strong> — DNS/WWW/E-Mail plus Reputation.</li>
-        <li><strong>Plan</strong> — Prioritäten für 30/60/90 Tage.</li>
-        <li><strong>Umsetzung</strong> — schnelle Iterationen, Messgrößen.</li>
-        <li><strong>Monitoring</strong> — Monatsreports.</li>
+    <!-- BREADCRUMBS (sichtbar minimal, schema wichtig) -->
+    <nav class="container crumbs" aria-label="Brotkrumen">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="https://sicherklick-at.github.io/"><span itemprop="name">Start</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li aria-current="page">Leistungen</li>
       </ol>
-    </section>
+    </nav>
 
-    <section id="referenzen" class="container section">
-      <h2 data-i18n="referenzen.h2">Referenzen</h2>
+    <!-- CASE STUDIES -->
+    <section id="cases" class="container section">
+      <h2 data-i18n="cases.h2">Case Studies</h2>
       <div class="grid3">
-        <figure class="card">
-          <blockquote>„DMARC in einer Woche — Spam-Complaints runter, Zustellbarkeit wieder stabil.“</blockquote>
-          <figcaption>— KMU, Wien</figcaption>
+        <figure class="card media">
+          <img src="assets/mark.svg" alt="DMARC Case" width="420" height="220" loading="lazy">
+          <figcaption>
+            <h3>DMARC in 7 Tagen</h3>
+            <p>Spam-Beschwerden ↓, Zustellbarkeit ↑. Policy von <code>none</code> → <code>reject</code>.</p>
+          </figcaption>
         </figure>
-        <figure class="card">
-          <blockquote>„Leichte Website (Lighthouse 95+), Leads +38&nbsp;% m/m.“</blockquote>
-          <figcaption>— E-Commerce, AT/DE</figcaption>
+        <figure class="card media">
+          <img src="assets/mark.svg" alt="Website Lighthouse Case" width="420" height="220" loading="lazy">
+          <figcaption>
+            <h3>Site-Speed 95+</h3>
+            <p>Lighthouse 95+, Anfragen ↑ +38 % m/m. Leichtes HTML + SEO-Basics.</p>
+          </figcaption>
         </figure>
-        <figure class="card">
-          <blockquote>„Der schnelle Domain-Reputation-Check entlarvte alte Records und fehlerhafte Aliasse.“</blockquote>
-          <figcaption>— B2B, NÖ</figcaption>
+        <figure class="card media">
+          <img src="assets/mark.svg" alt="Reputation/WHOIS Case" width="420" height="220" loading="lazy">
+          <figcaption>
+            <h3>Reputation Fix</h3>
+            <p>Falsche Aliasse &amp; alte Einträge gefunden — schnell behoben.</p>
+          </figcaption>
         </figure>
       </div>
     </section>
 
+    <!-- BLOG TEASERS -->
+    <section id="blog" class="container section">
+      <h2>Blog / Ratgeber</h2>
+      <div class="grid3">
+        <article class="card">
+          <h3>Checkliste: IT-Sicherheit für KMU (AT)</h3>
+          <p>10 Punkte für Geschäftsführung &amp; Admin. Backup, Richtlinien, M365, E-Mail.</p>
+          <a class="link" href="#kontakt">PDF anfordern →</a>
+        </article>
+        <article class="card">
+          <h3>SPF/DKIM/DMARC kurz erklärt</h3>
+          <p>Warum Mails im Spam landen — und wie Sie es in 3 Schritten stabilisieren.</p>
+          <a class="link" href="#kontakt">Beratung sichern →</a>
+        </article>
+        <article class="card">
+          <h3>Website-Launch ohne Pannen</h3>
+          <p>DNS, Zertifikate, Weiterleitungen, schema.org — alles, was oft fehlt.</p>
+          <a class="link" href="#kontakt">Checkliste erhalten →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner container section">
+      <div class="cta-inner">
+        <h2>Schnelle Hilfe? 20-Min Quick-Call</h2>
+        <p>DMARC/Spam, E-Mail-Zustellung, Netzwerk, Website-Fehler — erst Einschätzung kostenlos.</p>
+        <a class="btn" href="https://wa.me/436640000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn ghost" href="#kontakt">Kontaktformular</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
     <section id="faq" class="container section">
       <h2>FAQ</h2>
-      <details class="card><summary>Wie schnell ist der Quick Check?</summary><p>In der Regel 24–72 Stunden.</p></details>
-      <details class="card><summary>Arbeitet ihr in DE/PL/EN?</summary><p>Ja, DE/PL/EN.</p></details>
-      <details class="card><summary>Benötigt ihr Passwörter?</summary><p>Nein. Wir arbeiten über DNS-Einträge/Konfiguration beim Kunden oder per geteiltem Bildschirm.</p></details>
-      <details class="card><summary>Bietet ihr laufende Betreuung?</summary><p>Ja, als Wartung/Retainer.</p></details>
+      <details class="card"><summary>Wie schnell ist der Quick Check?</summary><p>In der Regel 24–72 Stunden.</p></details>
+      <details class="card"><summary>Arbeitet ihr in DE/PL/EN?</summary><p>Ja — Deutsch, Polnisch und Englisch.</p></details>
+      <details class="card"><summary>Benötigt ihr Passwörter?</summary><p>Nein. Wir arbeiten über DNS/Konfiguration oder geteilten Bildschirm.</p></details>
+      <details class="card"><summary>Bietet ihr laufende Betreuung?</summary><p>Ja, als Retainer inkl. Monatsreports.</p></details>
     </section>
 
+    <!-- REGIONEN -->
     <section class="container section" id="regionen">
       <h2>Regionen (Österreich)</h2>
       <p>Wien • Niederösterreich (z. B. Mistelbach, Gänserndorf) • Burgenland • Steiermark • Oberösterreich • Salzburg • Tirol • Vorarlberg • Kärnten.</p>
-      <p class="muted">Leistungen: DNS- &amp; E-Mail-Härtung (SPF/DKIM/DMARC), Phishing-Simulation, Website-Reputation, Webentwicklung &amp; SEO.</p>
+      <p class="muted">Leistungen: IT-Dienstleister &amp; IT-Sicherheit, E-Mail-Zustellung (SPF/DKIM/DMARC), Netzwerk &amp; Microsoft 365, Website-Reputation, Webentwicklung &amp; SEO.</p>
     </section>
 
+    <!-- KONTAKT -->
     <section id="kontakt" class="container section">
       <h2>Kontakt</h2>
       <div class="grid2">
@@ -238,13 +364,13 @@
   <footer class="container site-footer">
     <div class="social">
       <a href="https://www.facebook.com/profile.php?id=61583312521651" target="_blank" rel="noopener" aria-label="Facebook">
-        <img src="assets/icon-facebook.svg" alt="" width="22" height="22">
+        <img src="assets/icon-facebook.svg" alt="" width="22" height="22" loading="lazy">
       </a>
       <a href="https://www.youtube.com/@SicherKlickAT" target="_blank" rel="noopener" aria-label="YouTube">
-        <img src="assets/icon-youtube.svg" alt="" width="22" height="22">
+        <img src="assets/icon-youtube.svg" alt="" width="22" height="22" loading="lazy">
       </a>
       <a href="https://www.tiktok.com/@SicherKlickAT" target="_blank" rel="noopener" aria-label="TikTok">
-        <img src="assets/icon-tiktok.svg" alt="" width="22" height="22">
+        <img src="assets/icon-tiktok.svg" alt="" width="22" height="22" loading="lazy">
       </a>
     </div>
     <p>© <span id="y2"></span> SicherKlick-AT • Königliche Cyberabwehr Einheit • <a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a></p>
