@@ -42,7 +42,6 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="chatbot.css" />
 </head>
 <body>
   <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -328,13 +327,262 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"IT-Dienstleister & IT-Sicherheit","provider":{"@type":"LocalBusiness","name":"SicherKlick-AT"},"areaServed":["Wien","Niederösterreich"],"offers":{"@type":"AggregateOffer","lowPrice":"149","highPrice":"749","priceCurrency":"EUR"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wie schnell ist der Quick Check?","acceptedAnswer":{"@type":"Answer","text":"In der Regel 24–72 Stunden."}},{"@type":"Question","name":"Arbeitet ihr in DE/PL/EN?","acceptedAnswer":{"@type":"Answer","text":"Ja — Deutsch, Polnisch und Englisch."}},{"@type":"Question","name":"Benötigt ihr Passwörter?","acceptedAnswer":{"@type":"Answer","text":"Nein. Wir arbeiten über DNS/Konfiguration oder geteilten Bildschirm."}},{"@type":"Question","name":"Gibt es laufende Betreuung?","acceptedAnswer":{"@type":"Answer","text":"Ja, als Retainer inkl. Monatsreports."}}]}</script>
 
-  <!-- Skrypty -->
+  <!-- Skrypty strony -->
   <script src="script.js"></script>
 
-  <!-- Znacznik widżetu chatbota (PRZED skryptem chatbota) -->
+  <!-- Root chatbota -->
   <div id="sk-chat-root" aria-live="polite"></div>
 
-  <!-- Skrypt chatbota -->
-  <script src="chatbot.js"></script>
+  <!-- === INLINE CSS chatbota (bez plików zewnętrznych) === -->
+  <style id="sk-chat-style">
+  :root{
+    --chat-accent: var(--secondary, #0EA5E9);
+    --chat-bg: var(--card, #fff);
+    --chat-text: var(--text, #111827);
+    --chat-muted: var(--muted, #6b7280);
+    --chat-border: var(--border, #e5e7eb);
+    --chat-shadow: var(--shadow, 0 10px 30px rgba(15,23,42,.05));
+  }
+  #sk-chat-root { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  .sk-fab { display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px;
+    border-radius:50%; border:none; background:var(--chat-accent); color:#fff; cursor:pointer;
+    box-shadow:0 12px 30px rgba(14,165,233,.35); }
+  .sk-fab:hover{ transform:translateY(-1px); }
+  .sk-panel{ position:absolute; right:0; bottom:70px; width:min(360px,92vw); max-height:min(70vh,640px);
+    display:none; flex-direction:column; background:var(--chat-bg); color:var(--chat-text);
+    border:1px solid var(--chat-border); border-radius:14px; box-shadow:var(--chat-shadow); overflow:hidden; }
+  .sk-panel.open{ display:flex; }
+  .sk-header{ display:flex; align-items:center; gap:8px; padding:12px 14px;
+    background: color-mix(in oklab, var(--chat-accent) 24%, transparent);
+    border-bottom:1px solid var(--chat-border); }
+  .sk-title{ font-weight:800; font-size:14px; }
+  .sk-sub{ color:var(--chat-muted); font-size:12px; }
+  .sk-close{ margin-left:auto; background:transparent; border:none; color:var(--chat-text); cursor:pointer; font-size:18px; }
+  .sk-log{ padding:12px; overflow-y:auto; flex:1; display:grid; gap:10px;
+    background: linear-gradient(180deg, color-mix(in oklab, var(--panel, #E5E7EB) 55%, transparent), transparent); }
+  .sk-msg{ max-width:84%; padding:10px 12px; border-radius:12px; border:1px solid var(--chat-border);
+    background:var(--chat-bg); box-shadow:0 4px 16px rgba(0,0,0,.04); font-size:14px; }
+  .sk-msg.agent{ border-color: color-mix(in oklab, var(--chat-accent) 40%, var(--chat-border)); }
+  .sk-msg.user{ margin-left:auto; background: color-mix(in oklab, var(--chat-accent) 10%, var(--chat-bg)); }
+  .sk-row{ display:flex; gap:8px; align-items:flex-start; }
+  .sk-avatar{ width:24px; height:24px; border-radius:50%; display:inline-grid; place-items:center;
+    background:var(--chat-accent); color:#111827; font-weight:800; font-size:12px; }
+  .sk-avatar.user{ background:#e5e7eb; }
+  .sk-quick{ display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+  .sk-quick button{ border:1px solid var(--chat-border); background:var(--chat-bg); color:var(--chat-text);
+    padding:6px 10px; border-radius:999px; cursor:pointer; font-size:12px; }
+  .sk-quick button:hover{ border-color:var(--chat-accent); }
+  .sk-input{ display:flex; gap:8px; padding:10px; border-top:1px solid var(--chat-border); }
+  .sk-input input{ flex:1; border-radius:10px; border:1px solid var(--chat-border);
+    background:var(--chat-bg); color:var(--chat-text); padding:10px 12px; font-size:14px; }
+  .sk-input button{ border:none; background:var(--chat-accent); color:#fff; padding:10px 12px; border-radius:10px; cursor:pointer; }
+  @media (max-width:420px){ .sk-header{padding:10px 12px} .sk-log{padding:10px} }
+  </style>
+
+  <!-- === INLINE JS chatbota (bez plików zewnętrznych) === -->
+  <script id="sk-chat-script">
+  (function(){
+    // Bezpieczeństwo: niech błędy chatbota nie blokują reszty strony
+    try {
+      const WA = "https://wa.me/4368120922439";
+      const state = { lang: (localStorage.getItem('lang') === 'pl') ? 'pl' : 'de' };
+
+      const i18n = {
+        de: {
+          title: "SicherKlick-Assistent",
+          sub: "Antwortet zu Paketen, IT-Security & Terminen",
+          hi: "Hallo! Ich helfe dir schnell das Richtige zu finden:",
+          quick: ["Pakete & Preise","E-Mail Zustellung (SPF/DKIM/DMARC)","Phishing-Training","Web & SEO","Reaktionszeit","Servicegebiet","Sprachen","Termin (WhatsApp)"],
+          map: {
+            pakete: "Unsere Pakete:\n\n• Quick Check — €149\n· DNS/SSL & Reputation, 20-min Ergebnis-Call, PDF Kurzbericht.\n\n• Business Shield — €749\n· VT/OTX, WHOIS/ASN, SPF/DKIM/DMARC Review, 2-h Awareness (DE/PL), 90-Tage Maßnahmenplan.\n\n• Web Start — €699\n· RWD Website (DE/PL), Formulare & Analytics, technisches SEO-Setup.",
+            spf: "E-Mail-Zustellung:\n· SPF/DKIM/DMARC sauber setzen\n· MTA-STS/TLS-RPT aktivieren\n· Bounces & Spam-Folder reduzieren\n· Dokumentierter Change-Plan (ohne Ausfälle)",
+            phish: "Awareness & Phishing-Simulation:\n· 2-h Schulung (DE/PL)\n· Simulierte Kampagne + Reporting\n· Richtlinien & kurze Checklisten für Teams",
+            web: "Web & SEO:\n· Leichte Websites (Lighthouse 90+)\n· schema.org, interne Verlinkung\n· Lokales SEO (AT): GBP, Herold, WKO\n· Landingpages, PDF-Angebote",
+            react: "Reaktionszeit:\n· Quick Check: 24–72h\n· Kleinere Fixes meist < 48h\n· Notfälle: nach Absprache sofort",
+            area: "Servicegebiet:\n· Wien & Niederösterreich (Mistelbach, Gänserndorf …)\n· Auch AT-weit remote",
+            lang: "Sprachen:\n· Deutsch, Polnisch, Englisch",
+            book: "Super — schreibe uns kurz auf WhatsApp. Wir melden uns schnell zurück."
+          },
+          ask: "Stelle eine Frage oder wähle eine Option…",
+          handoff: "Auf WhatsApp öffnen",
+          goto: {pakete:"#pakete", it:"#it", cyber:"#cyber", web:"#web", kontakt:"#kontakt"}
+        },
+        pl: {
+          title: "Asystent SicherKlick",
+          sub: "Odpowiada o pakietach, IT-security i terminach",
+          hi: "Cześć! Pomogę wybrać właściwą usługę:",
+          quick: ["Pakiety i ceny","Dostarczalność e-mail (SPF/DKIM/DMARC)","Szkolenia phishing","WWW & SEO","Czas reakcji","Obszar działania","Języki","Termin (WhatsApp)"],
+          map: {
+            pakete: "Nasze pakiety:\n\n• Quick Check — €149\n· DNS/SSL & reputacja, 20-min call z wynikami, PDF.\n\n• Business Shield — €749\n· VT/OTX, WHOIS/ASN, przegląd SPF/DKIM/DMARC, 2-h szkolenie (DE/PL), plan działań na 90 dni.\n\n• Web Start — €699\n· Lekka strona (DE/PL), formularze & Analytics, techniczne SEO.",
+            spf: "Dostarczalność e-mail:\n· SPF/DKIM/DMARC poprawnie\n· MTA-STS/TLS-RPT\n· Mniej odbić i spamu\n· Zmiany bez przestojów (plan)",
+            phish: "Świadomość & symulacje phishing:\n· Szkolenie 2-h (DE/PL)\n· Kampania testowa + raport\n· Procedury i checklisty",
+            web: "WWW & SEO:\n· Lekkie strony (Lighthouse 90+)\n· schema.org, linkowanie wewnętrzne\n· Lokalne SEO (AT): GBP, Herold, WKO\n· Landing page, oferty PDF",
+            react: "Czas reakcji:\n· Quick Check: 24–72 h\n· Mniejsze poprawki zwykle < 48 h\n· Nagłe sprawy: po uzgodnieniu od ręki",
+            area: "Obszar:\n· Wiedeń i Dolna Austria (np. Mistelbach, Gänserndorf)\n· Zdalnie w całej AT",
+            lang: "Języki:\n· Niemiecki, polski, angielski",
+            book: "Super — napisz krótko na WhatsApp. Oddzwonimy szybko."
+          },
+          ask: "Napisz pytanie lub wybierz opcję…",
+          handoff: "Otwórz WhatsApp",
+          goto: {pakete:"#pakete", it:"#it", cyber:"#cyber", web:"#web", kontakt:"#kontakt"}
+        }
+      };
+
+      function intentOf(text, lang) {
+        const t = (text||"").toLowerCase();
+        if (lang==='de') {
+          if (/\b(paket|pakete|preis|preise|kosten)\b/.test(t)) return 'pakete';
+          if (/\bspf|dkim|dmarc|e-?mail|zustell/.test(t)) return 'spf';
+          if (/\bphish|awareness|training|schulung/.test(t)) return 'phish';
+          if (/\bweb|seo|seite|website|shop/.test(t)) return 'web';
+          if (/\breaktion|reaktionszeit|wie schnell|dauer/.test(t)) return 'react';
+          if (/\bgebiet|region|wien|niederösterreich|österreich/.test(t)) return 'area';
+          if (/\bsprache|deutsch|polnisch|englisch/.test(t)) return 'lang';
+          if (/\btermin|whatsapp|anrufen|call/.test(t)) return 'book';
+        } else {
+          if (/\bpakiet|pakiety|cena|ceny|koszt/.test(t)) return 'pakete';
+          if (/\bspf|dkim|dmarc|e-?mail|dostarcz/.test(t)) return 'spf';
+          if (/\bphish|szkoleni|awareness|trening/.test(t)) return 'phish';
+          if (/\bwww|seo|stron|sklep|landing/.test(t)) return 'web';
+          if (/\bczas|reakcj|jak szybko|ile trwa/.test(t)) return 'react';
+          if (/\bobszar|region|wiedeń|austria/.test(t)) return 'area';
+          if (/\bjęzyk|jezyki|de|pl|en/.test(t)) return 'lang';
+          if (/\btermin|whatsapp|zadzw|call/.test(t)) return 'book';
+        }
+        return null;
+      }
+
+      // Root
+      var root = document.getElementById('sk-chat-root');
+      if (!root) {
+        root = document.createElement('div');
+        root.id = 'sk-chat-root';
+        document.body.appendChild(root);
+      }
+      root.innerHTML = `
+        <button class="sk-fab" id="skFab" aria-label="Chat">💬</button>
+        <section class="sk-panel" id="skPanel" role="dialog" aria-modal="false" aria-labelledby="skTitle">
+          <header class="sk-header">
+            <div>
+              <div class="sk-title" id="skTitle"></div>
+              <div class="sk-sub" id="skSub"></div>
+            </div>
+            <button class="sk-close" id="skClose" aria-label="Schließen">✕</button>
+          </header>
+          <div class="sk-log" id="skLog" tabindex="0"></div>
+          <div class="sk-input">
+            <input id="skInput" type="text" autocomplete="off" placeholder="">
+            <button id="skSend" aria-label="Send">➤</button>
+          </div>
+        </section>
+      `;
+
+      const el = {
+        fab: document.getElementById('skFab'),
+        panel: document.getElementById('skPanel'),
+        close: document.getElementById('skClose'),
+        log: document.getElementById('skLog'),
+        input: document.getElementById('skInput'),
+        send: document.getElementById('skSend'),
+        title: document.getElementById('skTitle'),
+        sub: document.getElementById('skSub')
+      };
+
+      function t(key){ return i18n[state.lang][key]; }
+      function renderHeader(){
+        el.title.textContent = t('title');
+        el.sub.textContent   = t('sub');
+        el.input.placeholder = t('ask');
+      }
+      function escapeHtml(s){
+        return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      }
+      function msgAgent(text, quickLabels){
+        const row = document.createElement('div'); row.className = 'sk-row agent';
+        row.innerHTML = `
+          <div class="sk-avatar">SK</div>
+          <div class="sk-msg sk agent"><div>${escapeHtml(text).replace(/\n/g,'<br>')}</div></div>`;
+        el.log.appendChild(row);
+        if (Array.isArray(quickLabels) && quickLabels.length){
+          const q = document.createElement('div'); q.className = 'sk-quick';
+          quickLabels.forEach((label, idx)=>{
+            const b = document.createElement('button');
+            b.textContent = label;
+            b.addEventListener('click', ()=>handleQuick(idx));
+            q.appendChild(b);
+          });
+          row.querySelector('.sk-msg').appendChild(q);
+        }
+        el.log.scrollTop = el.log.scrollHeight;
+      }
+      function msgUser(text){
+        const row = document.createElement('div'); row.className = 'sk-row user';
+        row.innerHTML = `<div class="sk-msg sk user"><div>${escapeHtml(text)}</div></div>
+                         <div class="sk-avatar user">🙂</div>`;
+        el.log.appendChild(row);
+        el.log.scrollTop = el.log.scrollHeight;
+      }
+      function openPanel(){
+        el.panel.classList.add('open');
+        el.log.focus();
+        if (!el.log.dataset.boot){ boot(); el.log.dataset.boot='1'; }
+      }
+      function closePanel(){ el.panel.classList.remove('open'); }
+
+      el.fab.addEventListener('click', openPanel);
+      el.close.addEventListener('click', closePanel);
+
+      // Synchronizacja z przełącznikiem języka strony (jeśli istnieje)
+      const langDe = document.getElementById('lang-de');
+      const langPl = document.getElementById('lang-pl');
+      langDe && langDe.addEventListener('click', ()=>{ state.lang='de'; renderHeader(); });
+      langPl && langPl.addEventListener('click', ()=>{ state.lang='pl'; renderHeader(); });
+
+      renderHeader();
+
+      function boot(){ msgAgent(t('hi'), i18n[state.lang].quick); }
+      function handleQuick(index){
+        const label = i18n[state.lang].quick[index]; msgUser(label);
+        const map = {0:'pakete',1:'spf',2:'phish',3:'web',4:'react',5:'area',6:'lang',7:'book'};
+        handleIntent(map[index]);
+      }
+      function handleIntent(intent){
+        const M = i18n[state.lang].map;
+        switch(intent){
+          case 'pakete': msgAgent(M.pakete + '\n\n👉 ' + linkTo('pakete')); break;
+          case 'spf':    msgAgent(M.spf    + '\n\n👉 ' + linkTo('it'));     break;
+          case 'phish':  msgAgent(M.phish  + '\n\n👉 ' + linkTo('cyber'));  break;
+          case 'web':    msgAgent(M.web    + '\n\n👉 ' + linkTo('web'));    break;
+          case 'react':  msgAgent(M.react); break;
+          case 'area':   msgAgent(M.area);  break;
+          case 'lang':   msgAgent(M.lang);  break;
+          case 'book':   msgAgent(M.book + `\n\n📲 <a href="${WA}" target="_blank" rel="noopener">${i18n[state.lang].handoff}</a>`); break;
+          default:
+            msgAgent((state.lang==='de' ? "Ich habe dich nicht ganz verstanden. Meintest du eines davon?"
+                                        : "Nie do końca zrozumiałem. Chodziło o coś z tego?"),
+                     i18n[state.lang].quick);
+        }
+      }
+      function linkTo(sectionKey){
+        const href = i18n[state.lang].goto[sectionKey] || '#';
+        const label = (state.lang==='de' ? 'Zur Sektion' : 'Przejdź do sekcji');
+        return `<a href="${href}" onclick="document.querySelector('${href}')?.scrollIntoView({behavior:'smooth'});return false;">${label}</a>`;
+      }
+      function onSend(){
+        const v = el.input.value.trim(); if (!v) return;
+        el.input.value=''; msgUser(v);
+        const intent = intentOf(v, state.lang); handleIntent(intent);
+      }
+      el.send.addEventListener('click', onSend);
+      el.input.addEventListener('keydown', e=>{ if(e.key==='Enter') onSend(); });
+
+      // Minimalny log do debuggera
+      console.debug('[SK-Chat] ready');
+    } catch (e) {
+      console.error('[SK-Chat] Fehler:', e);
+    }
+  })();
+  </script>
 </body>
 </html>
