@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
   <title>IT-Dienstleister & IT-Sicherheit in Wien/Niederösterreich | SicherKlick-AT</title>
   <meta name="description" content="IT-Dienstleister für KMU in Wien & Niederösterreich: IT-Sicherheit, E-Mail-Zustellung (SPF/DKIM/DMARC), Netzwerk & Microsoft 365, Webentwicklung & SEO. Schnelle Hilfe & klare Pakete." />
@@ -26,7 +26,7 @@
   <meta property="og:locale:alternate" content="pl_PL">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Motyw (kolory UI przeglądarek) -->
+  <!-- Motyw -->
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
@@ -98,7 +98,6 @@
         </div>
         <div class="hero-art">
           <div class="shield glow">🛡️</div>
-          <!-- GIF w hero -->
           <img class="mock"
                src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnNyOXZwMGthcmQwMGcxeHU1bWM3MXoxZ3dqYmU4ODF6Nzhzdm9ldSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KX5nwoDX97AtPvKBF6/giphy.gif"
                alt="Animated cyber defense visual"
@@ -333,7 +332,7 @@
   <!-- Root chatbota -->
   <div id="sk-chat-root" aria-live="polite"></div>
 
-  <!-- === INLINE CSS chatbota (bez plików zewnętrznych) === -->
+  <!-- === INLINE CSS chatbota (RESPONSYWNE) === -->
   <style id="sk-chat-style">
   :root{
     --chat-accent: var(--secondary, #0EA5E9);
@@ -341,49 +340,96 @@
     --chat-text: var(--text, #111827);
     --chat-muted: var(--muted, #6b7280);
     --chat-border: var(--border, #e5e7eb);
-    --chat-shadow: var(--shadow, 0 10px 30px rgba(15,23,42,.05));
+    --chat-shadow: var(--shadow, 0 10px 30px rgba(15,23,42,.08));
   }
-  #sk-chat-root { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-  .sk-fab { display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px;
-    border-radius:50%; border:none; background:var(--chat-accent); color:#fff; cursor:pointer;
-    box-shadow:0 12px 30px rgba(14,165,233,.35); }
+  #sk-chat-root {
+    position: fixed;
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    z-index: 2147483000;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  .sk-fab {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:56px; height:56px; border-radius:50%; border:none;
+    background:var(--chat-accent); color:#fff; cursor:pointer;
+    box-shadow:0 12px 30px rgba(14,165,233,.35);
+    touch-action:manipulation;
+  }
   .sk-fab:hover{ transform:translateY(-1px); }
-  .sk-panel{ position:absolute; right:0; bottom:70px; width:min(360px,92vw); max-height:min(70vh,640px);
-    display:none; flex-direction:column; background:var(--chat-bg); color:var(--chat-text);
-    border:1px solid var(--chat-border); border-radius:14px; box-shadow:var(--chat-shadow); overflow:hidden; }
+
+  .sk-panel{
+    position: absolute;
+    right: 0;
+    bottom: calc(56px + 12px); /* nad FAB */
+    width: min(420px, calc(100vw - 24px));
+    max-height: min(80dvh, 640px);
+    display:none; flex-direction:column;
+    background:var(--chat-bg); color:var(--chat-text);
+    border:1px solid var(--chat-border); border-radius:14px;
+    box-shadow:var(--chat-shadow); overflow:hidden;
+  }
   .sk-panel.open{ display:flex; }
+
   .sk-header{ display:flex; align-items:center; gap:8px; padding:12px 14px;
-    background: color-mix(in oklab, var(--chat-accent) 24%, transparent);
-    border-bottom:1px solid var(--chat-border); }
-  .sk-title{ font-weight:800; font-size:14px; }
+    background: color-mix(in oklab, var(--chat-accent) 22%, transparent);
+    border-bottom:1px solid var(--chat-border);
+  }
+  .sk-title{ font-weight:800; font-size:14px; line-height:1.2; }
   .sk-sub{ color:var(--chat-muted); font-size:12px; }
-  .sk-close{ margin-left:auto; background:transparent; border:none; color:var(--chat-text); cursor:pointer; font-size:18px; }
-  .sk-log{ padding:12px; overflow-y:auto; flex:1; display:grid; gap:10px;
-    background: linear-gradient(180deg, color-mix(in oklab, var(--panel, #E5E7EB) 55%, transparent), transparent); }
-  .sk-msg{ max-width:84%; padding:10px 12px; border-radius:12px; border:1px solid var(--chat-border);
-    background:var(--chat-bg); box-shadow:0 4px 16px rgba(0,0,0,.04); font-size:14px; }
+  .sk-close{ margin-left:auto; background:transparent; border:none; color:var(--chat-text);
+    cursor:pointer; font-size:18px; line-height:1; }
+
+  .sk-log{
+    padding:12px; overflow:auto; -webkit-overflow-scrolling:touch;
+    flex:1; display:grid; gap:10px;
+    background: linear-gradient(180deg, color-mix(in oklab, var(--chat-bg) 92%, transparent), transparent);
+  }
+  .sk-row{ display:flex; gap:8px; align-items:flex-start; }
+  .sk-msg{ max-width:84%; padding:10px 12px; border-radius:12px;
+    border:1px solid var(--chat-border); background:var(--chat-bg);
+    box-shadow:0 4px 16px rgba(0,0,0,.04); font-size:14px;
+  }
   .sk-msg.agent{ border-color: color-mix(in oklab, var(--chat-accent) 40%, var(--chat-border)); }
   .sk-msg.user{ margin-left:auto; background: color-mix(in oklab, var(--chat-accent) 10%, var(--chat-bg)); }
-  .sk-row{ display:flex; gap:8px; align-items:flex-start; }
-  .sk-avatar{ width:24px; height:24px; border-radius:50%; display:inline-grid; place-items:center;
-    background:var(--chat-accent); color:#111827; font-weight:800; font-size:12px; }
+  .sk-avatar{ width:24px; height:24px; border-radius:50%;
+    display:inline-grid; place-items:center; background:var(--chat-accent);
+    color:#111827; font-weight:800; font-size:12px;
+  }
   .sk-avatar.user{ background:#e5e7eb; }
+
   .sk-quick{ display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
   .sk-quick button{ border:1px solid var(--chat-border); background:var(--chat-bg); color:var(--chat-text);
     padding:6px 10px; border-radius:999px; cursor:pointer; font-size:12px; }
   .sk-quick button:hover{ border-color:var(--chat-accent); }
+
   .sk-input{ display:flex; gap:8px; padding:10px; border-top:1px solid var(--chat-border); }
-  .sk-input input{ flex:1; border-radius:10px; border:1px solid var(--chat-border);
-    background:var(--chat-bg); color:var(--chat-text); padding:10px 12px; font-size:14px; }
-  .sk-input button{ border:none; background:var(--chat-accent); color:#fff; padding:10px 12px; border-radius:10px; cursor:pointer; }
-  @media (max-width:420px){ .sk-header{padding:10px 12px} .sk-log{padding:10px} }
+  .sk-input input{
+    flex:1; border-radius:10px; border:1px solid var(--chat-border);
+    background:var(--chat-bg); color:var(--chat-text);
+    padding:10px 12px; font-size:14px;
+  }
+  .sk-input button{
+    border:none; background:var(--chat-accent); color:#fff;
+    padding:10px 12px; border-radius:10px; cursor:pointer;
+  }
+
+  /* Bardzo małe ekrany: panel jako lekki modal */
+  @media (max-width: 360px){
+    .sk-panel{
+      position: fixed;
+      inset: env(safe-area-inset-top) env(safe-area-inset-right) calc(8px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
+      margin: 8px;
+      width: auto;
+      max-height: calc(100dvh - 16px - env(safe-area-inset-bottom));
+      border-radius: 12px;
+    }
+  }
   </style>
 
-  <!-- === INLINE JS chatbota (bez plików zewnętrznych) === -->
+  <!-- === INLINE JS chatbota === -->
   <script id="sk-chat-script">
   (function(){
-    // Bezpieczeństwo: niech błędy chatbota nie blokują reszty strony
     try {
       const WA = "https://wa.me/4368120922439";
       const state = { lang: (localStorage.getItem('lang') === 'pl') ? 'pl' : 'de' };
@@ -455,11 +501,7 @@
 
       // Root
       var root = document.getElementById('sk-chat-root');
-      if (!root) {
-        root = document.createElement('div');
-        root.id = 'sk-chat-root';
-        document.body.appendChild(root);
-      }
+      if (!root) { root = document.createElement('div'); root.id = 'sk-chat-root'; document.body.appendChild(root); }
       root.innerHTML = `
         <button class="sk-fab" id="skFab" aria-label="Chat">💬</button>
         <section class="sk-panel" id="skPanel" role="dialog" aria-modal="false" aria-labelledby="skTitle">
@@ -495,45 +537,30 @@
         el.sub.textContent   = t('sub');
         el.input.placeholder = t('ask');
       }
-      function escapeHtml(s){
-        return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-      }
+      function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
       function msgAgent(text, quickLabels){
         const row = document.createElement('div'); row.className = 'sk-row agent';
-        row.innerHTML = `
-          <div class="sk-avatar">SK</div>
-          <div class="sk-msg sk agent"><div>${escapeHtml(text).replace(/\n/g,'<br>')}</div></div>`;
+        row.innerHTML = `<div class="sk-avatar">SK</div><div class="sk-msg sk agent"><div>${escapeHtml(text).replace(/\n/g,'<br>')}</div></div>`;
         el.log.appendChild(row);
         if (Array.isArray(quickLabels) && quickLabels.length){
           const q = document.createElement('div'); q.className = 'sk-quick';
-          quickLabels.forEach((label, idx)=>{
-            const b = document.createElement('button');
-            b.textContent = label;
-            b.addEventListener('click', ()=>handleQuick(idx));
-            q.appendChild(b);
-          });
+          quickLabels.forEach((label, idx)=>{ const b = document.createElement('button'); b.textContent = label; b.addEventListener('click', ()=>handleQuick(idx)); q.appendChild(b); });
           row.querySelector('.sk-msg').appendChild(q);
         }
         el.log.scrollTop = el.log.scrollHeight;
       }
       function msgUser(text){
         const row = document.createElement('div'); row.className = 'sk-row user';
-        row.innerHTML = `<div class="sk-msg sk user"><div>${escapeHtml(text)}</div></div>
-                         <div class="sk-avatar user">🙂</div>`;
-        el.log.appendChild(row);
-        el.log.scrollTop = el.log.scrollHeight;
+        row.innerHTML = `<div class="sk-msg sk user"><div>${escapeHtml(text)}</div></div><div class="sk-avatar user">🙂</div>`;
+        el.log.appendChild(row); el.log.scrollTop = el.log.scrollHeight;
       }
-      function openPanel(){
-        el.panel.classList.add('open');
-        el.log.focus();
-        if (!el.log.dataset.boot){ boot(); el.log.dataset.boot='1'; }
-      }
+      function openPanel(){ el.panel.classList.add('open'); el.log.focus(); if (!el.log.dataset.boot){ boot(); el.log.dataset.boot='1'; } }
       function closePanel(){ el.panel.classList.remove('open'); }
 
       el.fab.addEventListener('click', openPanel);
       el.close.addEventListener('click', closePanel);
 
-      // Synchronizacja z przełącznikiem języka strony (jeśli istnieje)
+      // sync z przełącznikiem języka na stronie
       const langDe = document.getElementById('lang-de');
       const langPl = document.getElementById('lang-pl');
       langDe && langDe.addEventListener('click', ()=>{ state.lang='de'; renderHeader(); });
@@ -577,11 +604,8 @@
       el.send.addEventListener('click', onSend);
       el.input.addEventListener('keydown', e=>{ if(e.key==='Enter') onSend(); });
 
-      // Minimalny log do debuggera
-      console.debug('[SK-Chat] ready');
-    } catch (e) {
-      console.error('[SK-Chat] Fehler:', e);
-    }
+      console.debug('[SK-Chat] ready (responsive)');
+    } catch (e) { console.error('[SK-Chat] Fehler:', e); }
   })();
   </script>
 </body>
