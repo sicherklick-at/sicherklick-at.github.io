@@ -100,10 +100,16 @@ button.btn{cursor:pointer}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
 .reveal.show{opacity:1;transform:none}
 
-/* GIF kotka nad pakietami */
-.media-center{display:grid;place-items:center;padding-top:0}
+/* GIF kotka nad pakietami – centrowanie pewne */
+.media-center{
+  display:block;
+  text-align:center;         /* centrowanie fallback */
+  padding-top:0
+}
 .center-gif{
   max-width:640px;width:100%;
+  margin:0 auto;             /* centrowanie pewne */
+  display:block;             /* dla margin auto */
   border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.18);
   border:1px solid rgba(0,0,0,.06)
 }
