@@ -56,6 +56,11 @@ figure blockquote{margin:0 0 8px 0;font-style:italic}
 figure figcaption{color:#6b7280;font-size:14px}
 details{border-radius:12px;border:1px solid #eee;padding:10px;margin-bottom:10px}
 
+/* Social icons */
+.social{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.social img{display:block;opacity:.9;transition:.2s transform ease,.2s opacity ease}
+.social a:hover img{opacity:1;transform:translateY(-1px)}
+
 /* Responsive */
 @media (max-width:1000px){
   .process{grid-template-columns:1fr 1fr}
