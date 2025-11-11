@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('y2')?.append(y);
 });
 
-// Prosty i18n (DE/PL) – kluczowe nagłówki/CTA
+// i18n (DE/PL)
 const dict = {
   de: {
     'hero.h1':'IT-Dienstleister & IT-Sicherheit für KMU in Wien & Niederösterreich',
@@ -40,10 +40,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const id = a.getAttribute('href').slice(1);
     const el = document.getElementById(id);
     if(el){ el.setAttribute('tabindex','-1'); el.focus({preventScroll:true}); }
+    // zamknij menu po kliknięciu
+    document.body.classList.remove('nav-open');
+    const btn = document.getElementById('menu-btn');
+    if (btn) btn.setAttribute('aria-expanded','false');
   });
 });
 
-// Scroll reveal (IntersectionObserver)
+// Scroll reveal
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
@@ -55,3 +59,12 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 document.getElementById('contact-form')?.addEventListener('submit', ()=>{
   setTimeout(()=>alert('Danke! Falls sich der Mail-Client nicht geöffnet hat, schreiben Sie direkt per E-Mail.'), 400);
 });
+
+// Hamburger toggle
+const menuBtn = document.getElementById('menu-btn');
+if (menuBtn){
+  menuBtn.addEventListener('click', ()=>{
+    const open = document.body.classList.toggle('nav-open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+}
