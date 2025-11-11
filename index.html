@@ -26,13 +26,20 @@
   <meta property="og:locale:alternate" content="pl_PL">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!-- Motyw (ułatwia kolor paska na urządzeniach) -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
+
   <!-- PWA manifest -->
   <link rel="manifest" href="site.webmanifest">
 
   <!-- Identity -->
   <link rel="me" href="https://www.facebook.com/profile.php?id=61583312521651">
 
+  <!-- Favicon -->
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -41,17 +48,14 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <!-- Hamburger (mobile) -->
       <button class="menu-btn" id="menu-btn" aria-label="Menü" aria-expanded="false" aria-controls="primary-nav">
         <span></span><span></span><span></span>
       </button>
 
-      <!-- Logo -->
       <div class="brand">
         <img src="assets/logo-lockup.svg" alt="SicherKlick-AT" width="200" height="56" loading="eager">
       </div>
 
-      <!-- NAV -->
       <nav id="primary-nav" aria-label="Hauptnavigation">
         <a href="#it">IT-Services</a>
         <a href="#cyber">Cyberabwehr</a>
@@ -62,7 +66,6 @@
         <a href="#kontakt" class="cta">Kontakt</a>
       </nav>
 
-      <!-- Lang + Theme -->
       <div class="lang">
         <button id="lang-de" class="active" aria-pressed="true">DE</button>
         <button id="lang-pl" aria-pressed="false">PL</button>
@@ -92,8 +95,11 @@
         </div>
         <div class="hero-art">
           <div class="shield glow">🛡️</div>
-          <!-- Lokalny GIF (assets/cat.gif) -->
-          <img class="mock" src="assets/cat.gif" alt="Cat typing on a laptop" width="480" height="360" loading="lazy">
+          <!-- NOWY GIF w hero (Twój link) -->
+          <img class="mock"
+               src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnNyOXZwMGthcmQwMGcxeHU1bWM3MXoxZ3dqYmU4ODF6Nzhzdm9ldSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KX5nwoDX97AtPvKBF6/giphy.gif"
+               alt="Animated cyber defense visual"
+               width="480" height="360" loading="lazy">
         </div>
       </div>
     </section>
@@ -107,6 +113,15 @@
         <li><span class="pill">OWASP</span></li>
         <li><span class="pill">Lighthouse 95+</span></li>
       </ul>
+    </section>
+
+    <!-- DODANA SEKCJA: stary kotek wyśrodkowany nad pakietami -->
+    <section class="container section reveal media-center">
+      <img
+        src="https://media1.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif?cid=790b7611&rid=giphy.gif&ct=g"
+        alt="Cat typing on a laptop"
+        class="center-gif"
+        width="640" height="480" loading="lazy">
     </section>
 
     <!-- IT -->
@@ -304,16 +319,10 @@
     <p>© <span id="y2"></span> SicherKlick-AT • Königliche Cyberabwehr Einheit • <a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a></p>
   </footer>
 
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"LocalBusiness","name":"SicherKlick-AT","url":"https://sicherklick-at.github.io/","image":"https://sicherklick-at.github.io/assets/og-image.png","email":"mailto:sicherklickat@sicherklickat.com","telephone":"+43 664 000 00 00","address":{"@type":"PostalAddress","addressLocality":"Hausbrunn","addressRegion":"Niederösterreich","addressCountry":"AT"},"areaServed":["Wien","Niederösterreich","Österreich"],"knowsLanguage":["de","pl","en"],"priceRange":"€€","sameAs":["https://www.facebook.com/profile.php?id=61583312521651","https://www.youtube.com/@SicherKlickAT","https://www.tiktok.com/@SicherKlickAT"],"description":"IT-Dienstleister & IT-Sicherheit in Österreich: E-Mail-Zustellung (SPF/DKIM/DMARC), Netzwerk, Webentwicklung & SEO."}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Service","serviceType":"IT-Dienstleister & IT-Sicherheit","provider":{"@type":"LocalBusiness","name":"SicherKlick-AT"},"areaServed":["Wien","Niederösterreich"],"offers":{"@type":"AggregateOffer","lowPrice":"149","highPrice":"749","priceCurrency":"EUR"}}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wie schnell ist der Quick Check?","acceptedAnswer":{"@type":"Answer","text":"In der Regel 24–72 Stunden."}},{"@type":"Question","name":"Arbeitet ihr in DE/PL/EN?","acceptedAnswer":{"@type":"Answer","text":"Ja — Deutsch, Polnisch und Englisch."}},{"@type":"Question","name":"Benötigt ihr Passwörter?","acceptedAnswer":{"@type":"Answer","text":"Nein. Wir arbeiten über DNS/Konfiguration oder geteilten Bildschirm."}},{"@type":"Question","name":"Gibt es laufende Betreuung?","acceptedAnswer":{"@type":"Answer","text":"Ja, als Retainer inkl. Monatsreports."}}]}
-  </script>
+  <!-- JSON-LD (bez zmian) -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"SicherKlick-AT","url":"https://sicherklick-at.github.io/","image":"https://sicherklick-at.github.io/assets/og-image.png","email":"mailto:sicherklickat@sicherklickat.com","telephone":"+43 664 000 00 00","address":{"@type":"PostalAddress","addressLocality":"Hausbrunn","addressRegion":"Niederösterreich","addressCountry":"AT"},"areaServed":["Wien","Niederösterreich","Österreich"],"knowsLanguage":["de","pl","en"],"priceRange":"€€","sameAs":["https://www.facebook.com/profile.php?id=61583312521651","https://www.youtube.com/@SicherKlickAT","https://www.tiktok.com/@SicherKlickAT"],"description":"IT-Dienstleister & IT-Sicherheit in Österreich: E-Mail-Zustellung (SPF/DKIM/DMARC), Netzwerk, Webentwicklung & SEO."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"IT-Dienstleister & IT-Sicherheit","provider":{"@type":"LocalBusiness","name":"SicherKlick-AT"},"areaServed":["Wien","Niederösterreich"],"offers":{"@type":"AggregateOffer","lowPrice":"149","highPrice":"749","priceCurrency":"EUR"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wie schnell ist der Quick Check?","acceptedAnswer":{"@type":"Answer","text":"In der Regel 24–72 Stunden."}},{"@type":"Question","name":"Arbeitet ihr in DE/PL/EN?","acceptedAnswer":{"@type":"Answer","text":"Ja — Deutsch, Polnisch und Englisch."}},{"@type":"Question","name":"Benötigt ihr Passwörter?","acceptedAnswer":{"@type":"Answer","text":"Nein. Wir arbeiten über DNS/Konfiguration oder geteilten Bildschirm."}},{"@type":"Question","name":"Gibt es laufende Betreuung?","acceptedAnswer":{"@type":"Answer","text":"Ja, als Retainer inkl. Monatsreports."}}]}</script>
 
   <script src="script.js"></script>
 </body>
