@@ -1,11 +1,11 @@
-// Rok w stopce / Jahr in Footer
+// Jahr in Footer
 document.addEventListener('DOMContentLoaded', () => {
   const year = new Date().getFullYear();
-  const y1 = document.getElementById('y');  if (y1) y1.textContent = year;
-  const y2 = document.getElementById('y2'); if (y2) y2.textContent = year;
+  document.getElementById('y')?.append(year);
+  document.getElementById('y2')?.append(year);
 });
 
-// Słownik i18n — DE jako domyślne, PL po przełączeniu
+// i18n — DE default, PL on toggle
 const dict = {
   de: {
     'nav.leistungen':'Leistungen','nav.pakete':'Pakete','nav.prozess':'Prozess',
@@ -28,13 +28,11 @@ const dict = {
 };
 
 function setLang(lang){
-  // podmień teksty oznaczone data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const key = el.getAttribute('data-i18n');
     const value = dict[lang]?.[key];
     if (value) el.innerHTML = value;
   });
-  // UI stanu przycisków
   const deBtn = document.getElementById('lang-de');
   const plBtn = document.getElementById('lang-pl');
   if (deBtn && plBtn){
@@ -46,13 +44,12 @@ function setLang(lang){
   localStorage.setItem('lang', lang);
 }
 
-// init: DE jest bazą, jeśli zapisano PL — przełącz
 const saved = localStorage.getItem('lang');
 if (saved === 'pl') setLang('pl');
 document.getElementById('lang-de')?.addEventListener('click', ()=>setLang('de'));
 document.getElementById('lang-pl')?.addEventListener('click', ()=>setLang('pl'));
 
-// Smooth scroll + focus dostępnościowy
+// Smooth scroll + focus
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', ()=>{
     const id = a.getAttribute('href').slice(1);
@@ -61,10 +58,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// Feedback formularza (mailto)
-const form = document.getElementById('contact-form');
-if(form){
-  form.addEventListener('submit', ()=>{
-    setTimeout(()=>alert('Danke! Falls sich der Mail-Client nicht geöffnet hat, schreiben Sie direkt per E-Mail.'), 400);
-  });
-}
+// Mailto feedback
+document.getElementById('contact-form')?.addEventListener('submit', ()=>{
+  setTimeout(()=>alert('Danke! Falls sich der Mail-Client nicht geöffnet hat, schreiben Sie direkt per E-Mail.'), 400);
+});
