@@ -26,7 +26,7 @@
   <meta property="og:locale:alternate" content="pl_PL">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Motyw (ułatwia kolor paska na urządzeniach) -->
+  <!-- Motyw (kolory UI przeglądarek) -->
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
@@ -86,7 +86,10 @@
           </p>
           <div class="hero-cta">
             <a class="btn" href="#pakete" data-i18n="cta.pakete">Pakete ansehen</a>
-            <a class="btn ghost" href="https://wa.me/436640000000?text=Hallo%2C%20ich%20brauche%20einen%20Quick%20Check%20(DNS%2FDMARC)" target="_blank" rel="noopener" data-i18n="cta.termin">Termin sichern (20&nbsp;Min)</a>
+            <!-- WhatsApp: nowy numer + krótka wiadomość -->
+            <a class="btn ghost"
+               href="https://wa.me/4368120922439?text=Hallo%2C%20ich%20brauche%20einen%20Quick%20Check%20(DNS%2FDMARC)"
+               target="_blank" rel="noopener" data-i18n="cta.termin">Termin sichern (20&nbsp;Min)</a>
           </div>
           <ul class="badges" role="list" aria-label="Kompetenzen">
             <li>SPF/DKIM/DMARC</li><li>Phishing-Simulation</li><li>Microsoft 365</li><li>WLAN &amp; VPN</li><li>Webshops &amp; SEO</li>
@@ -113,15 +116,6 @@
         <li><span class="pill">OWASP</span></li>
         <li><span class="pill">Lighthouse 95+</span></li>
       </ul>
-    </section>
-
-    <!-- DODANA SEKCJA: stary kotek wyśrodkowany nad pakietami -->
-    <section class="container section reveal media-center">
-      <img
-        src="https://media1.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif?cid=790b7611&rid=giphy.gif&ct=g"
-        alt="Cat typing on a laptop"
-        class="center-gif"
-        width="640" height="480" loading="lazy">
     </section>
 
     <!-- IT -->
@@ -182,6 +176,15 @@
           <p>GBP, Herold.at, WKO-Firmen A–Z, strukturierte Daten & interne Links.</p>
         </article>
       </div>
+    </section>
+
+    <!-- STARY KOTEK: wyśrodkowany GIF tuż nad pakietami -->
+    <section class="container section reveal media-center">
+      <img
+        src="https://media1.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif?cid=790b7611&rid=giphy.gif&ct=g"
+        alt="Cat typing on a laptop"
+        class="center-gif"
+        width="640" height="480" loading="lazy">
     </section>
 
     <!-- PAKETE -->
@@ -262,7 +265,8 @@
       <div class="cta-inner">
         <h2>Schnelle Hilfe? 20-Min Quick-Call</h2>
         <p>DMARC/Spam, E-Mail-Zustellung, Netzwerk, Website-Fehler — erste Einschätzung kostenlos.</p>
-        <a class="btn" href="https://wa.me/436640000000" target="_blank" rel="noopener">WhatsApp</a>
+        <!-- WhatsApp: nowy numer -->
+        <a class="btn" href="https://wa.me/4368120922439" target="_blank" rel="noopener">WhatsApp</a>
         <a class="btn ghost" href="#kontakt">Kontaktformular</a>
       </div>
     </section>
@@ -292,7 +296,8 @@
           <label>E-Mail<input type="email" name="email" required></label>
           <label>Nachricht<textarea name="message" rows="6" required></textarea></label>
           <button class="btn" type="submit">Absenden</button>
-          <p class="muted">Telefon/WhatsApp: <a href="https://wa.me/436640000000" target="_blank" rel="noopener">+43 664 000 00 00</a></p>
+          <!-- Telefon/WhatsApp: nowy numer -->
+          <p class="muted">Telefon/WhatsApp: <a href="https://wa.me/4368120922439" target="_blank" rel="noopener">+43 681 20922439</a></p>
         </form>
         <div class="card">
           <p><strong>E-Mail:</strong> <a href="mailto:sicherklickat@sicherklickat.com">sicherklickat@sicherklickat.com</a></p>
@@ -319,8 +324,8 @@
     <p>© <span id="y2"></span> SicherKlick-AT • Königliche Cyberabwehr Einheit • <a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a></p>
   </footer>
 
-  <!-- JSON-LD (bez zmian) -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"SicherKlick-AT","url":"https://sicherklick-at.github.io/","image":"https://sicherklick-at.github.io/assets/og-image.png","email":"mailto:sicherklickat@sicherklickat.com","telephone":"+43 664 000 00 00","address":{"@type":"PostalAddress","addressLocality":"Hausbrunn","addressRegion":"Niederösterreich","addressCountry":"AT"},"areaServed":["Wien","Niederösterreich","Österreich"],"knowsLanguage":["de","pl","en"],"priceRange":"€€","sameAs":["https://www.facebook.com/profile.php?id=61583312521651","https://www.youtube.com/@SicherKlickAT","https://www.tiktok.com/@SicherKlickAT"],"description":"IT-Dienstleister & IT-Sicherheit in Österreich: E-Mail-Zustellung (SPF/DKIM/DMARC), Netzwerk, Webentwicklung & SEO."}</script>
+  <!-- JSON-LD -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"SicherKlick-AT","url":"https://sicherklick-at.github.io/","image":"https://sicherklick-at.github.io/assets/og-image.png","email":"mailto:sicherklickat@sicherklickat.com","telephone":"+43 681 20922439","address":{"@type":"PostalAddress","addressLocality":"Hausbrunn","addressRegion":"Niederösterreich","addressCountry":"AT"},"areaServed":["Wien","Niederösterreich","Österreich"],"knowsLanguage":["de","pl","en"],"priceRange":"€€","sameAs":["https://www.facebook.com/profile.php?id=61583312521651","https://www.youtube.com/@SicherKlickAT","https://www.tiktok.com/@SicherKlickAT"],"description":"IT-Dienstleister & IT-Sicherheit in Österreich: E-Mail-Zustellung (SPF/DKIM/DMARC), Netzwerk, Webentwicklung & SEO."}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"IT-Dienstleister & IT-Sicherheit","provider":{"@type":"LocalBusiness","name":"SicherKlick-AT"},"areaServed":["Wien","Niederösterreich"],"offers":{"@type":"AggregateOffer","lowPrice":"149","highPrice":"749","priceCurrency":"EUR"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wie schnell ist der Quick Check?","acceptedAnswer":{"@type":"Answer","text":"In der Regel 24–72 Stunden."}},{"@type":"Question","name":"Arbeitet ihr in DE/PL/EN?","acceptedAnswer":{"@type":"Answer","text":"Ja — Deutsch, Polnisch und Englisch."}},{"@type":"Question","name":"Benötigt ihr Passwörter?","acceptedAnswer":{"@type":"Answer","text":"Nein. Wir arbeiten über DNS/Konfiguration oder geteilten Bildschirm."}},{"@type":"Question","name":"Gibt es laufende Betreuung?","acceptedAnswer":{"@type":"Answer","text":"Ja, als Retainer inkl. Monatsreports."}}]}</script>
 
