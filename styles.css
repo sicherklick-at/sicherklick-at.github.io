@@ -13,31 +13,29 @@ img{max-width:100%;display:block;height:auto}
 .skip:focus{left:16px;top:16px;width:auto;height:auto;background:#fff;padding:8px 12px;border:2px solid var(--secondary);border-radius:8px;z-index:999}
 
 /* Header */
-.site-header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid #eee;z-index:20}
+.site-header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid #eee;z-index:20}
 .nav{display:flex;align-items:center;gap:20px;justify-content:space-between}
-.nav nav a{margin:0 8px;padding:8px 10px;border-radius:10px}
+.nav nav a{margin:0 8px;padding:8px 10px;border-radius:10px;white-space:nowrap}
 .nav nav a:hover{background:#f3f4f6}
 .brand{display:flex;align-items:center;gap:10px}
 .cta{padding:8px 12px;border-radius:999px;background:var(--accent);color:#fff}
-.lang button{border:1px solid #ddd;background:#fff;padding:6px 10px;border-radius:8px;margin-left:6px;cursor:pointer}
+.lang{display:flex;gap:6px}
+.lang button{border:1px solid #ddd;background:#fff;padding:6px 10px;border-radius:8px;cursor:pointer}
 .lang .active{border-color:var(--accent)}
 
 /* Hero */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid #eee}
+.bg-blur{position:absolute;inset:0;pointer-events:none}
 .bg-blur::before,
 .bg-blur::after{
-  content:"";position:absolute;inset:auto;z-index:-1;border-radius:50%;
-  filter:blur(60px);opacity:.25;
-  animation:float 12s infinite ease-in-out
+  content:"";position:absolute;border-radius:50%;
+  filter:blur(60px);opacity:.25;animation:float 12s infinite ease-in-out
 }
 .bg-blur::before{width:520px;height:520px;top:-140px;right:-160px;background:linear-gradient(120deg,var(--accent),var(--secondary))}
-.bg-blur::after{width:560px;height:560px;bottom:-200px;left:-180px;background:linear-gradient(120deg,var(--secondary),var(--accent));animation-delay: -4s}
-@keyframes float{
-  0%{transform:translateY(0) scale(1)}
-  50%{transform:translateY(-12px) scale(1.03)}
-  100%{transform:translateY(0) scale(1)}
-}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 20px}
+.bg-blur::after{width:560px;height:560px;bottom:-200px;left:-180px;background:linear-gradient(120deg,var(--secondary),var(--accent));animation-delay:-4s}
+@keyframes float{0%{transform:translateY(0) scale(1)}50%{transform:translateY(-12px) scale(1.03)}100%{transform:translateY(0) scale(1)}}
+
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:48px 20px}
 .hero h1{font-size:42px;margin:0 0 10px}
 .lead{font-size:18px;color:#374151}
 .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
@@ -47,9 +45,10 @@ img{max-width:100%;display:block;height:auto}
 .badges{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:10px}
 .badges li{background:var(--panel);padding:6px 10px;border-radius:999px}
 .trust{color:#6b7280;margin-top:10px}
-.hero-art{display:flex;align-items:center;justify-content:center;position:relative}
+.hero-art{display:flex;align-items:center;justify-content:center;gap:16px}
 .shield{font-size:96px}
-.mock{position:absolute;bottom:-10px;right:-10px;width:70%;max-width:420px;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.18);border:1px solid rgba(0,0,0,.06)}
+/* Kotek – statyczny layout (bez absolute), zawsze widoczny */
+.mock{width:100%;max-width:420px;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.18);border:1px solid rgba(0,0,0,.06)}
 
 /* Sections / cards */
 .section{padding:36px 20px}
@@ -61,7 +60,6 @@ img{max-width:100%;display:block;height:auto}
 .price .price-tag{font-size:28px;font-weight:800}
 .price.featured{position:relative;border-color:var(--accent);box-shadow:0 12px 30px rgba(245,158,11,.15)}
 .price .badge{position:absolute;top:-12px;right:12px;background:var(--accent);color:#fff;padding:4px 10px;border-radius:999px;font-size:12px}
-.kpis{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;color:var(--muted)}
 
 .trustbar{padding-top:0}
 .trust-logos{display:flex;gap:10px;flex-wrap:wrap;list-style:none;padding:0;margin:0}
@@ -114,5 +112,4 @@ button.btn{cursor:pointer}
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr}
   .hero h1{font-size:34px}
-  .mock{position:static;width:100%;margin-top:10px}
 }
