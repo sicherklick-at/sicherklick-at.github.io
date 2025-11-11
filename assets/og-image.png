@@ -1,0 +1,124 @@
+# Create an Open Graph image (1200x630) for SicherKlick-AT
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+import os
+
+W, H = 1200, 630
+bg_color = (255, 255, 255)
+accent = (245, 158, 11)   # #F59E0B
+secondary = (14, 165, 233) # #0EA5E9
+text_color = (17, 24, 39)  # #111827
+muted = (51, 65, 85)       # #334155
+
+img = Image.new("RGB", (W, H), bg_color)
+draw = ImageDraw.Draw(img)
+
+# Subtle background panel
+panel_margin = 40
+panel = [panel_margin, panel_margin, W-panel_margin, H-panel_margin]
+draw.rounded_rectangle(panel, radius=28, fill=(229, 231, 235))  # #E5E7EB
+
+# Inner white card
+card_margin = 70
+card = [card_margin, card_margin, W-card_margin, H-card_margin]
+draw.rounded_rectangle(card, radius=26, fill=(255, 255, 255))
+
+# Build a simple gradient for the shield
+grad_w, grad_h = 260, 260
+grad = Image.new("RGB", (grad_w, grad_h), (0,0,0))
+gd = ImageDraw.Draw(grad)
+for y in range(grad_h):
+    t = y / (grad_h-1)
+    r = int(accent[0] * (1-t) + secondary[0] * t)
+    g = int(accent[1] * (1-t) + secondary[1] * t)
+    b = int(accent[2] * (1-t) + secondary[2] * t)
+    gd.line([(0,y),(grad_w,y)], fill=(r,g,b))
+
+# Create shield mask (polygon + bottom curve)
+shield = Image.new("L", (grad_w, grad_h), 0)
+sd = ImageDraw.Draw(shield)
+# polygon top
+poly = [(grad_w*0.2, grad_h*0.1),(grad_w*0.8, grad_h*0.2),(grad_w*0.8, grad_h*0.6),(grad_w*0.5, grad_h*0.9),(grad_w*0.2, grad_h*0.6)]
+sd.polygon(poly, fill=255)
+shield = shield.filter(ImageFilter.GaussianBlur(1.2))
+
+# Composite shield
+shield_img = Image.new("RGBA", (grad_w, grad_h), (0,0,0,0))
+shield_img.paste(grad, (0,0), shield)
+
+# Add slight shadow
+shadow = Image.new("RGBA", (grad_w, grad_h), (0,0,0,0))
+sh = ImageDraw.Draw(shadow)
+sh.polygon(poly, fill=(0,0,0,80))
+shadow = shadow.filter(ImageFilter.GaussianBlur(8))
+
+# Place shield on card left
+left_x = card[0] + 40
+left_y = card[1] + int((card[3]-card[1]-grad_h)/2)
+img.paste(shadow, (left_x+6, left_y+10), shadow)
+img.paste(shield_img, (left_x, left_y), shield_img)
+
+# Monogram lines (S/K) on shield
+mono = ImageDraw.Draw(img)
+cx, cy = left_x + grad_w//2, left_y + grad_h//2
+# "S" stroke-like (simplified)
+mono.line([(cx-50, cy-45), (cx+35, cy-45)], fill=(11, 18, 32), width=8)
+mono.arc([cx-60, cy-65, cx+20, cy+15], start=0, end=200, fill=(11,18,32), width=8)
+mono.arc([cx-20, cy+10, cx+60, cy+90], start=200, end=360, fill=(11,18,32), width=8)
+# "K"
+mono.line([(cx-70, cy-60), (cx-70, cy+60)], fill=(11,18,32), width=8)
+mono.line([(cx-70, cy), (cx-20, cy-35)], fill=(11,18,32), width=8)
+mono.line([(cx-70, cy), (cx-20, cy+35)], fill=(11,18,32), width=8)
+
+# Load fonts (fallback to default if system fonts not present)
+def try_font(names, size):
+    for n in names:
+        try:
+            return ImageFont.truetype(n, size)
+        except:
+            continue
+    return ImageFont.load_default()
+
+title_font = try_font(["Montserrat-Bold.ttf","Inter-Bold.ttf","DejaVuSans-Bold.ttf"], 64)
+tagline_font = try_font(["Inter-Regular.ttf","DejaVuSans.ttf"], 28)
+meta_font = try_font(["Inter-Medium.ttf","DejaVuSans.ttf"], 24)
+
+# Text content
+title = "SicherKlick-AT — Cyberabwehr & Webentwicklung in Österreich"
+tagline = "SPF/DKIM/DMARC • Phishing-Simulation • Website-Reputation • SEO"
+contact = "Wien / Hausbrunn  •  +43 664 000 00 00  •  sicherklickat@sicherklickat.com"
+
+# Position text to the right of shield
+text_x = left_x + grad_w + 40
+text_y = card[1] + 40
+
+# Draw title (wrap if needed)
+max_w = card[2] - text_x - 40
+def draw_wrapped(draw, text, font, x, y, fill, max_w, line_spacing=10):
+    words = text.split()
+    lines = []
+    line = ""
+    for w in words:
+        test = (line + " " + w).strip()
+        if draw.textlength(test, font=font) <= max_w:
+            line = test
+        else:
+            lines.append(line)
+            line = w
+    if line:
+        lines.append(line)
+    for i, l in enumerate(lines):
+        draw.text((x, y), l, font=font, fill=fill)
+        y += font.size + line_spacing
+    return y
+
+text_y = draw_wrapped(draw, title, title_font, text_x, text_y, text_color, max_w, 10)
+text_y += 10
+text_y = draw_wrapped(draw, tagline, tagline_font, text_x, text_y, muted, max_w, 6)
+text_y += 18
+draw.text((text_x, text_y), contact, font=meta_font, fill=muted)
+
+# Save
+os.makedirs("/mnt/data/assets", exist_ok=True)
+out_path = "/mnt/data/assets/og-image.png"
+img.save(out_path, "PNG", optimize=True)
+out_path
