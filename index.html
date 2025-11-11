@@ -8,11 +8,13 @@
   <meta name="description" content="IT-Dienstleister für KMU in Wien & Niederösterreich: IT-Sicherheit, E-Mail-Zustellung (SPF/DKIM/DMARC), Netzwerk & Microsoft 365, Webentwicklung & SEO. Schnelle Hilfe & klare Pakete." />
   <meta name="robots" content="index,follow" />
 
+  <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://sicherklick-at.github.io/">
   <link rel="alternate" href="https://sicherklick-at.github.io/" hreflang="x-default">
   <link rel="alternate" href="https://sicherklick-at.github.io/" hreflang="de-AT">
   <link rel="alternate" href="https://sicherklick-at.github.io/" hreflang="pl-PL">
 
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="SicherKlick-AT — IT-Dienstleister & Cyberabwehr" />
   <meta property="og:description" content="IT-Sicherheit, E-Mail-Zustellung, Netzwerk, Webentwicklung & SEO. 20-Min Erstberatung gratis." />
   <meta property="og:type" content="website" />
@@ -24,16 +26,22 @@
   <meta property="og:locale:alternate" content="pl_PL">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!-- Motyw (kolory UI przeglądarek) -->
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
 
+  <!-- PWA manifest -->
   <link rel="manifest" href="site.webmanifest">
+
+  <!-- Identity -->
   <link rel="me" href="https://www.facebook.com/profile.php?id=61583312521651">
+
+  <!-- Favicon -->
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
-  <!-- NOWE: style chatbota -->
   <link rel="stylesheet" href="chatbot.css" />
 </head>
 <body>
@@ -91,6 +99,7 @@
         </div>
         <div class="hero-art">
           <div class="shield glow">🛡️</div>
+          <!-- GIF w hero -->
           <img class="mock"
                src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnNyOXZwMGthcmQwMGcxeHU1bWM3MXoxZ3dqYmU4ODF6Nzhzdm9ldSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KX5nwoDX97AtPvKBF6/giphy.gif"
                alt="Animated cyber defense visual"
@@ -321,10 +330,11 @@
 
   <!-- Skrypty -->
   <script src="script.js"></script>
-  <!-- NOWE: skrypt chatbota -->
-  <script src="chatbot.js"></script>
 
-  <!-- Znacznik widżetu chatbota -->
+  <!-- Znacznik widżetu chatbota (PRZED skryptem chatbota) -->
   <div id="sk-chat-root" aria-live="polite"></div>
+
+  <!-- Skrypt chatbota -->
+  <script src="chatbot.js"></script>
 </body>
 </html>
