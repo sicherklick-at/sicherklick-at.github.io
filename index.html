@@ -3,25 +3,55 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SicherKlick-AT — Cyberabwehr & Webentwicklung (DE/PL)</title>
-  <meta name="description" content="SicherKlick-AT stärkt KMU gegen Phishing und Ausfälle: DNS- & E-Mail-Härtung (SPF/DKIM/DMARC), Website-Reputation, Webentwicklung und SEO in AT/DE/CH." />
+  <title>SicherKlick-AT — Cyberabwehr & Webentwicklung in Österreich (DE/PL)</title>
+  <meta name="description" content="Cyberabwehr für KMU in Österreich: DNS- & E-Mail-Härtung (SPF/DKIM/DMARC), Website-Reputation, Webentwicklung & SEO. DE/PL." />
   <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="SicherKlick-AT — Cyberabwehr & Webentwicklung" />
   <meta property="og:description" content="Phishing-Resilienz, DNS-Härtung, Webdev & SEO. 20-min Erstberatung gratis." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sicherklick-at.github.io/" />
   <meta property="og:image" content="assets/og-image.png" />
+  <meta property="og:locale" content="de_AT">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="pl_PL">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://sicherklick-at.github.io/">
+  <link rel="alternate" href="https://sicherklick-at.github.io/" hreflang="x-default">
+  <link rel="alternate" href="https://sicherklick-at.github.io/" hreflang="de-AT">
+  <link rel="alternate" href="https://sicherklick-at.github.io/" hreflang="pl-PL">
+
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css" />
-  <script type="application/ld+json">{
-    "@context":"https://schema.org","@type":"LocalBusiness",
-    "name":"SicherKlick-AT","image":"assets/og-image.png",
-    "url":"https://sicherklick-at.github.io/","email":"mailto:sicherklickat@sicherklickat.com",
+
+  <!-- schema.org LocalBusiness (AT) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"SicherKlick-AT",
+    "url":"https://sicherklick-at.github.io/",
+    "image":"https://sicherklick-at.github.io/assets/og-image.png",
+    "email":"mailto:sicherklickat@sicherklickat.com",
     "telephone":"+43 664 000 00 00",
-    "address":{"@type":"PostalAddress","addressLocality":"Wien / Hausbrunn","addressCountry":"AT"},
-    "sameAs":["https://www.youtube.com/@SicherKlickAT","https://www.tiktok.com/@SicherKlickAT"],
-    "description":"Cyberabwehr, Webentwicklung und SEO für KMU in AT/DE/CH."
-  }</script>
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"Hausbrunn",
+      "addressRegion":"Niederösterreich",
+      "addressCountry":"AT"
+    },
+    "areaServed":{"@type":"Country","name":"Austria"},
+    "knowsLanguage":["de","pl","en"],
+    "priceRange":"€€",
+    "sameAs":[
+      "https://www.youtube.com/@SicherKlickAT",
+      "https://www.tiktok.com/@SicherKlickAT"
+    ],
+    "description":"Cyberabwehr, DNS/E-Mail-Härtung (SPF/DKIM/DMARC), Website-Reputation, Webentwicklung & SEO für KMU in Österreich."
+  }
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -63,7 +93,7 @@
           <li>Webshops &amp; SEO</li>
           <li>PDF/STIX-Reports</li>
         </ul>
-        <p class="trust">ISO-Mindset • OWASP • NIST CSF • DSGVO</p>
+        <p class="trust">Österreich-Fokus • ISO-Mindset • OWASP • NIST CSF • DSGVO</p>
       </div>
       <div class="hero-art" aria-hidden="true">
         <div class="shield">🛡️</div>
@@ -174,6 +204,12 @@
       <details class="card"><summary>Bietet ihr laufende Betreuung?</summary><p>Ja, als Wartung/Retainer.</p></details>
     </section>
 
+    <section class="container section" id="regionen">
+      <h2>Regionen (Österreich)</h2>
+      <p>Wien • Niederösterreich (z. B. Mistelbach, Gänserndorf) • Burgenland • Steiermark • Oberösterreich • Salzburg • Tirol • Vorarlberg • Kärnten.</p>
+      <p class="muted">Leistungen: DNS- &amp; E-Mail-Härtung (SPF/DKIM/DMARC), Phishing-Simulation, Website-Reputation, Webentwicklung &amp; SEO.</p>
+    </section>
+
     <section id="kontakt" class="container section">
       <h2>Kontakt</h2>
       <div class="grid2">
@@ -197,6 +233,20 @@
   <footer class="container site-footer">
     <p>© <span id="y2"></span> SicherKlick-AT • Königliche Cyberabwehr Einheit • <a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a></p>
   </footer>
+
+  <!-- FAQ schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Wie schnell ist der Quick Check?","acceptedAnswer":{"@type":"Answer","text":"In der Regel 24–72 Stunden."}},
+      {"@type":"Question","name":"Arbeitet ihr in DE/PL/EN?","acceptedAnswer":{"@type":"Answer","text":"Ja, wir arbeiten auf Deutsch, Polnisch und Englisch."}},
+      {"@type":"Question","name":"Benötigt ihr Passwörter?","acceptedAnswer":{"@type":"Answer","text":"Nein – wir arbeiten über DNS/Konfiguration oder Screensharing."}},
+      {"@type":"Question","name":"Gibt es laufende Betreuung?","acceptedAnswer":{"@type":"Answer","text":"Ja, als Wartung/Retainer mit Monatsreports."}}
+    ]
+  }
+  </script>
 
   <script src="script.js"></script>
 </body>
